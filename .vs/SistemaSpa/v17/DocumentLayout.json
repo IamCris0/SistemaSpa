@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0A277E8D-BD7B-474B-BDB9-725346D014E4}|SistemaWebSpa\\SistemaWebSpa.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemawebspa\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A277E8D-BD7B-474B-BDB9-725346D014E4}|SistemaWebSpa\\SistemaWebSpa.csproj|solutionrelative:sistemawebspa\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaWebSpa\\Models\\Cliente.cs",
+              "RelativeDocumentMoniker": "SistemaWebSpa\\Models\\Cliente.cs",
+              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaWebSpa\\Models\\Cliente.cs",
+              "RelativeToolTip": "SistemaWebSpa\\Models\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T20:06:25.209Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
