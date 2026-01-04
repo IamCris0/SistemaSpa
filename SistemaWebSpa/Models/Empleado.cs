@@ -2,17 +2,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SpaWebMVC.Models
 {
-    public class Cliente
+    public class Empleado
     {
-        public int ClienteID { get; set; }
+        public int EmpleadoID { get; set; }
 
         [Required(ErrorMessage = "El nombre es requerido")]
-        [StringLength(100, ErrorMessage = "El nombre no puede exceder 100 caracteres")]
+        [StringLength(100)]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El apellido es requerido")]
-        [StringLength(100, ErrorMessage = "El apellido no puede exceder 100 caracteres")]
+        [StringLength(100)]
         [Display(Name = "Apellido")]
         public string Apellido { get; set; } = string.Empty;
 
@@ -26,22 +26,24 @@ namespace SpaWebMVC.Models
         [Display(Name = "Teléfono")]
         public string? Telefono { get; set; }
 
-        [StringLength(200)]
-        [Display(Name = "Dirección")]
-        public string? Direccion { get; set; }
+        [StringLength(50)]
+        [Display(Name = "Cargo")]
+        public string? Cargo { get; set; }
 
+        [Required(ErrorMessage = "La fecha de contratación es requerida")]
         [DataType(DataType.Date)]
-        [Display(Name = "Fecha de Nacimiento")]
-        public DateTime? FechaNacimiento { get; set; }
+        [Display(Name = "Fecha de Contratación")]
+        public DateTime FechaContratacion { get; set; }
 
-        [Display(Name = "Fecha de Registro")]
-        public DateTime FechaRegistro { get; set; }
+        [Range(0, 999999.99)]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Salario")]
+        public decimal? Salario { get; set; }
 
         [StringLength(50)]
         [Display(Name = "Estado")]
         public string Estado { get; set; } = "Activo";
 
-        // Propiedad calculada para nombre completo
         [Display(Name = "Nombre Completo")]
         public string NombreCompleto => $"{Nombre} {Apellido}";
     }

@@ -1,8 +1,213 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Dashboard - Sistema SPA";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid">
+    <!-- Encabezado de bienvenida -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-gradient-primary text-white shadow">
+                <div class="card-body p-4">
+                    <h1 class="display-5 fw-bold mb-2">
+                        <i class="bi bi-house-heart me-3"></i>Bienvenido al Sistema SPA
+                    </h1>
+                    <p class="lead mb-0">Hola, <strong>@ViewBag.NombreUsuario</strong> | Rol: @ViewBag.Rol</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas de estadísticas -->
+    <div class="row g-4 mb-4">
+        <div class="col-xl-3 col-md-6">
+            <div class="card border-left-primary shadow h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-xs fw-bold text-primary text-uppercase mb-1">Clientes</div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-people-fill fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="card border-left-success shadow h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-xs fw-bold text-success text-uppercase mb-1">Citas Hoy</div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-calendar-check-fill fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="card border-left-info shadow h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-xs fw-bold text-info text-uppercase mb-1">Servicios</div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-star-fill fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="card border-left-warning shadow h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-xs fw-bold text-warning text-uppercase mb-1">Empleados</div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-person-badge-fill fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Módulos del sistema -->
+    <div class="row g-4">
+        <div class="col-12">
+            <h3 class="mb-3"><i class="bi bi-grid-3x3-gap me-2"></i>Módulos del Sistema</h3>
+        </div>
+
+        <!-- Gestión de Clientes -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card shadow-sm h-100 hover-card">
+                <div class="card-header bg-primary text-white">
+                    <i class="bi bi-people me-2"></i>Gestión de Clientes
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Administra la información de tus clientes y su historial.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Acceder
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Citas y Reservas -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card shadow-sm h-100 hover-card">
+                <div class="card-header bg-success text-white">
+                    <i class="bi bi-calendar-event me-2"></i>Citas y Reservas
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Programa y gestiona las citas de los clientes.</p>
+                    <a href="#" class="btn btn-outline-success btn-sm">
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Acceder
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Servicios -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card shadow-sm h-100 hover-card">
+                <div class="card-header bg-info text-white">
+                    <i class="bi bi-star me-2"></i>Servicios y Categorías
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Gestiona los servicios ofrecidos y sus categorías.</p>
+                    <a href="#" class="btn btn-outline-info btn-sm">
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Acceder
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empleados -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card shadow-sm h-100 hover-card">
+                <div class="card-header bg-warning text-dark">
+                    <i class="bi bi-person-badge me-2"></i>Empleados
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Administra el personal y sus turnos de trabajo.</p>
+                    <a href="#" class="btn btn-outline-warning btn-sm">
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Acceder
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Productos -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card shadow-sm h-100 hover-card">
+                <div class="card-header bg-secondary text-white">
+                    <i class="bi bi-box-seam me-2"></i>Productos e Inventario
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Control de productos y stock disponible.</p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Acceder
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reportes -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card shadow-sm h-100 hover-card">
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-graph-up me-2"></i>Reportes
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Genera reportes y analiza el rendimiento del spa.</p>
+                    <a href="#" class="btn btn-outline-dark btn-sm">
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Acceder
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .border-left-primary {
+        border-left: 4px solid #4e73df;
+    }
+
+    .border-left-success {
+        border-left: 4px solid #1cc88a;
+    }
+
+    .border-left-info {
+        border-left: 4px solid #36b9cc;
+    }
+
+    .border-left-warning {
+        border-left: 4px solid #f6c23e;
+    }
+
+    .hover-card {
+        transition: transform 0.2s;
+    }
+
+    .hover-card:hover {
+        transform: translateY(-5px);
+    }
+</style>

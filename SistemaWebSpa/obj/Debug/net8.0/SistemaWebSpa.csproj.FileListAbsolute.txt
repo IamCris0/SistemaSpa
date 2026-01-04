@@ -33,3 +33,4 @@ C:\Users\gcris\Desktop\SistemaSpa\SistemaWebSpa\obj\Debug\net8.0\refint\SistemaW
 C:\Users\gcris\Desktop\SistemaSpa\SistemaWebSpa\obj\Debug\net8.0\SistemaWebSpa.pdb
 C:\Users\gcris\Desktop\SistemaSpa\SistemaWebSpa\obj\Debug\net8.0\SistemaWebSpa.genruntimeconfig.cache
 C:\Users\gcris\Desktop\SistemaSpa\SistemaWebSpa\obj\Debug\net8.0\ref\SistemaWebSpa.dll
+C:\Users\gcris\Desktop\SistemaSpa\SistemaWebSpa\obj\Debug\net8.0\SistemaWebSpa.csproj.AssemblyReference.cache
