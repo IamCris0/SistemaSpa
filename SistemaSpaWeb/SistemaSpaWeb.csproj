@@ -18,4 +18,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Citas\" />
+    <Folder Include="Views\Servicios\" />
+  </ItemGroup>
+
 </Project>

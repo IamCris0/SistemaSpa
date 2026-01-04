@@ -29,6 +29,7 @@ namespace SistemaSpaWeb.Models
         public DbSet<ClienteMembresia> ClientesMembresias { get; set; }
         public DbSet<GastoOperativo> GastosOperativos { get; set; }
         public DbSet<TurnoEmpleado> TurnosEmpleados { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

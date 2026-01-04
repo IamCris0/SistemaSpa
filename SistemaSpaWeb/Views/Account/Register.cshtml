@@ -1,0 +1,105 @@
+@model SistemaSpaWeb.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Registro";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema SPA</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .register-container {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        .register-card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .register-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px 15px 0 0;
+            padding: 30px;
+            text-align: center;
+        }
+        .register-icon {
+            font-size: 4rem;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="register-container">
+            <div class="card register-card">
+                <div class="register-header">
+                    <i class="bi bi-person-plus-fill register-icon"></i>
+                    <h2 class="text-white mt-3 mb-0">Registro de Usuario</h2>
+                    <p class="text-white-50">Sistema SPA</p>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Register" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="NombreUsuario" class="form-label">
+                                <i class="bi bi-person"></i> Nombre de Usuario
+                            </label>
+                            <input asp-for="NombreUsuario" class="form-control" placeholder="Mínimo 4 caracteres" autofocus />
+                            <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">
+                                <i class="bi bi-lock"></i> Contraseña
+                            </label>
+                            <input asp-for="Password" class="form-control" placeholder="Mínimo 6 caracteres" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ConfirmarPassword" class="form-label">
+                                <i class="bi bi-lock-fill"></i> Confirmar Contraseña
+                            </label>
+                            <input asp-for="ConfirmarPassword" class="form-control" placeholder="Repita la contraseña" />
+                            <span asp-validation-for="ConfirmarPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-check-circle"></i> Registrarse
+                            </button>
+                        </div>
+                    </form>
+
+                    <hr class="my-4">
+
+                    <div class="text-center">
+                        <p class="mb-0">¿Ya tienes cuenta?</p>
+                        <a asp-action="Login" class="btn btn-outline-primary mt-2">
+                            <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

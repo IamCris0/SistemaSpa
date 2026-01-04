@@ -1,0 +1,76 @@
+@model SistemaSpaWeb.Models.Servicios
+
+@{
+    ViewData["Title"] = "Detalles del Servicio";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-info-circle"></i> Detalles del Servicio
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID Servicio</dt>
+                        <dd class="col-sm-8">@Model.ServicioID</dd>
+
+                        <dt class="col-sm-4">Nombre</dt>
+                        <dd class="col-sm-8"><strong>@Model.NombreServicio</strong></dd>
+
+                        <dt class="col-sm-4">Categoría</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.Categoria != null)
+                            {
+                                <span class="badge bg-info">@Model.Categoria.NombreCategoria</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Sin categoría</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Descripción</dt>
+                        <dd class="col-sm-8">@(Model.Descripcion ?? "Sin descripción")</dd>
+
+                        <dt class="col-sm-4">Duración</dt>
+                        <dd class="col-sm-8">
+                            <i class="bi bi-clock"></i> @Model.Duracion minutos
+                        </dd>
+
+                        <dt class="col-sm-4">Precio</dt>
+                        <dd class="col-sm-8">
+                            <strong class="text-success">$@Model.Precio.ToString("N2")</strong>
+                        </dd>
+
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge @(Model.Estado == "Activo" ? "bg-success" : "bg-secondary")">
+                                @Model.Estado
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-4">Citas Asociadas</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-primary">@(Model.DetalleCitas?.Count ?? 0)</span>
+                        </dd>
+                    </dl>
+
+                    <hr />
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver al Listado
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@Model.ServicioID" class="btn btn-warning">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

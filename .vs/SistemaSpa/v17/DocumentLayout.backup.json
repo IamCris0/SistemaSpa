@@ -3,52 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\views\\citas\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\views\\citas\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\views\\citas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\views\\citas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\views\\clientes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\views\\clientes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\controllers\\servicioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\controllers\\servicioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\views\\clientes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\views\\clientes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\models\\membresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\models\\membresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\models\\clientemembresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\models\\clientemembresia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\models\\gastooperativo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\models\\gastooperativo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\models\\detalleventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\models\\detalleventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\models\\detallecompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\models\\detallecompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\models\\proveedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\models\\proveedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,149 +42,58 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "SistemaSpaWeb\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAADAAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABwAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-04T21:10:03.657Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Citas\\Create.cshtml",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\Citas\\Create.cshtml",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Citas\\Create.cshtml",
-              "RelativeToolTip": "SistemaSpaWeb\\Views\\Citas\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-04T21:09:00.252Z",
+              "WhenOpened": "2026-01-04T21:30:12.797Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Citas\\Index.cshtml",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\Citas\\Index.cshtml",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Citas\\Index.cshtml",
-              "RelativeToolTip": "SistemaSpaWeb\\Views\\Citas\\Index.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-04T21:08:37.665Z",
+              "Title": "ServiciosController.cs",
+              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\ServiciosController.cs",
+              "RelativeDocumentMoniker": "SistemaSpaWeb\\Controllers\\ServiciosController.cs",
+              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\ServiciosController.cs",
+              "RelativeToolTip": "SistemaSpaWeb\\Controllers\\ServiciosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:29:24.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\appsettings.json",
+              "RelativeDocumentMoniker": "SistemaSpaWeb\\appsettings.json",
+              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\appsettings.json",
+              "RelativeToolTip": "SistemaSpaWeb\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-04T21:18:32.102Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Clientes\\Create.cshtml",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\Clientes\\Create.cshtml",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Clientes\\Create.cshtml",
-              "RelativeToolTip": "SistemaSpaWeb\\Views\\Clientes\\Create.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAuwF0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-04T21:08:29.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Clientes\\Index.cshtml",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\Clientes\\Index.cshtml",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Clientes\\Index.cshtml",
-              "RelativeToolTip": "SistemaSpaWeb\\Views\\Clientes\\Index.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAuwFsAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-04T21:08:22.893Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ClienteMembresia.cs",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\ClienteMembresia.cs",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\ClienteMembresia.cs",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\ClienteMembresia.cs",
-              "RelativeToolTip": "SistemaSpaWeb\\Models\\ClienteMembresia.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Program.cs",
+              "RelativeDocumentMoniker": "SistemaSpaWeb\\Program.cs",
+              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Program.cs",
+              "RelativeToolTip": "SistemaSpaWeb\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAADwvzYAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T21:01:05.283Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Membresia.cs",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\Membresia.cs",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\Membresia.cs",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\Membresia.cs",
-              "RelativeToolTip": "SistemaSpaWeb\\Models\\Membresia.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAIA7wBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T21:00:47.125Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GastoOperativo.cs",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\GastoOperativo.cs",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\GastoOperativo.cs",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\GastoOperativo.cs",
-              "RelativeToolTip": "SistemaSpaWeb\\Models\\GastoOperativo.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAA4wA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T20:59:31.773Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DetalleVenta.cs",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\DetalleVenta.cs",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\DetalleVenta.cs",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\DetalleVenta.cs",
-              "RelativeToolTip": "SistemaSpaWeb\\Models\\DetalleVenta.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T20:58:20.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DetalleCompra.cs",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\DetalleCompra.cs",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\DetalleCompra.cs",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\DetalleCompra.cs",
-              "RelativeToolTip": "SistemaSpaWeb\\Models\\DetalleCompra.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T20:57:43.289Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Proveedores.cs",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\Proveedores.cs",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\Proveedores.cs",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\Proveedores.cs",
-              "RelativeToolTip": "SistemaSpaWeb\\Models\\Proveedores.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T20:57:01.418Z",
+              "WhenOpened": "2026-01-04T21:21:31.722Z",
               "EditorCaption": ""
             },
             {
@@ -211,9 +104,48 @@
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\ApplicationDbContext.cs",
               "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\ApplicationDbContext.cs",
               "RelativeToolTip": "SistemaSpaWeb\\Models\\ApplicationDbContext.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAMwBwAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T20:49:21.299Z",
+              "WhenOpened": "2026-01-04T21:20:22.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "SistemaSpaWeb\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "SistemaSpaWeb\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:20:18.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\Usuario.cs",
+              "RelativeToolTip": "SistemaSpaWeb\\Models\\Usuario.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAswD0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:19:51.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "SistemaSpaWeb\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "SistemaSpaWeb\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAArwGIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T21:18:52.512Z",
               "EditorCaption": ""
             }
           ]

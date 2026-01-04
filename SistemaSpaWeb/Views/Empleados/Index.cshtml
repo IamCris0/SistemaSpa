@@ -1,0 +1,88 @@
+@model IEnumerable<SistemaSpaWeb.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Empleados";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">
+        <i class="bi bi-person-workspace"></i> Gestión de Empleados
+    </h1>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            <i class="bi bi-check-circle"></i> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            <i class="bi bi-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Nuevo Empleado
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Completo</th>
+                        <th>Email</th>
+                        <th>Cargo</th>
+                        <th>Salario</th>
+                        <th>Citas</th>
+                        <th>Estado</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var empleado in Model)
+                    {
+                        <tr>
+                            <td>@empleado.EmpleadoID</td>
+                            <td><strong>@empleado.Nombre @empleado.Apellido</strong></td>
+                            <td>@empleado.Email</td>
+                            <td>
+                                <span class="badge bg-info">@empleado.Cargo</span>
+                            </td>
+                            <td><strong>$@(empleado.Salario?.ToString("N2") ?? "0.00")</strong></td>
+                            <td>
+                                <span class="badge bg-primary">@(empleado.Citas?.Count ?? 0)</span>
+                            </td>
+                            <td>
+                                <span class="badge @(empleado.Estado == "Activo" ? "bg-success" : "bg-secondary")">
+                                    @empleado.Estado
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Details" asp-route-id="@empleado.EmpleadoID"
+                                   class="btn btn-sm btn-info" title="Ver Detalles">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@empleado.EmpleadoID"
+                                   class="btn btn-sm btn-warning" title="Editar">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@empleado.EmpleadoID"
+                                   class="btn btn-sm btn-danger" title="Eliminar">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
