@@ -1,0 +1,103 @@
+@model IEnumerable<SistemaSpaWeb.Models.Cita>
+
+@{
+    ViewData["Title"] = "Citas";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">
+        <i class="bi bi-calendar-check"></i> Gestión de Citas
+    </h1>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            <i class="bi bi-check-circle"></i> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            <i class="bi bi-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Nueva Cita
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Cliente</th>
+                        <th>Empleado</th>
+                        <th>Sala</th>
+                        <th>Estado</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cita in Model)
+                    {
+                        <tr>
+                            <td>@cita.CitaID</td>
+                            <td>@cita.FechaCita.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                @cita.HoraInicio.ToString(@"hh\:mm") - @cita.HoraFin.ToString(@"hh\:mm")
+                            </td>
+                            <td>
+                                @if (cita.Cliente != null)
+                                {
+                                    <span>@cita.Cliente.Nombre @cita.Cliente.Apellido</span>
+                                }
+                            </td>
+                            <td>
+                                @if (cita.Empleado != null)
+                                {
+                                    <span>@cita.Empleado.Nombre @cita.Empleado.Apellido</span>
+                                }
+                            </td>
+                            <td>
+                                @if (cita.Sala != null)
+                                {
+                                    <span class="badge bg-info">@cita.Sala.NombreSala</span>
+                                }
+                            </td>
+                            <td>
+                                <span class="badge @(cita.EstadoCita == "Confirmada" ? "bg-success" :
+                                      cita.EstadoCita == "Pendiente" ? "bg-warning" :
+                                      cita.EstadoCita == "Completada" ? "bg-primary" : "bg-danger")">
+                                    @cita.EstadoCita
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Details" asp-route-id="@cita.CitaID"
+                                   class="btn btn-sm btn-info" title="Ver Detalles">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@cita.CitaID"
+                                   class="btn btn-sm btn-warning" title="Editar">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@cita.CitaID"
+                                   class="btn btn-sm btn-danger" title="Eliminar">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
