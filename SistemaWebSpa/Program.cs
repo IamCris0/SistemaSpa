@@ -1,40 +1,26 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using SpaWebMVC.Services;
+using Microsoft.EntityFrameworkCore;
+using SpaWebMVC.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Servicios
 builder.Services.AddControllersWithViews();
 
-// Registrar servicios personalizados
-builder.Services.AddSingleton<DatabaseService>();
-builder.Services.AddScoped<AuthService>();
+// Entity Framework con SQL Server
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SpaConnection")));
 
-// Configurar autenticación con cookies
+// Autenticación
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/Account/Login";
-        options.LogoutPath = "/Account/Logout";
-        options.AccessDeniedPath = "/Account/AccessDenied";
         options.ExpireTimeSpan = TimeSpan.FromHours(8);
-        options.SlidingExpiration = true;
-        options.Cookie.Name = "SpaMVC.Auth";
-        options.Cookie.HttpOnly = true;
-        options.Cookie.IsEssential = true;
     });
-
-// Configurar sesiones
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromHours(2);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -43,10 +29,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 
-app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
