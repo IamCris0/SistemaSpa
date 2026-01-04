@@ -1,0 +1,1628 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Spa" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=GOMEZ-JARAMILLO;Initial Catalog=Spa;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="Datos.Properties.Settings" SettingsPropertyName="SpaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CategoriasServicios" Member="CategoriasServicios">
+    <Type Name="CategoriasServicios">
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreCategoria" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="CategoriasServicios_Servicios" Member="Servicios" ThisKey="CategoriaID" OtherKey="CategoriaID" Type="Servicios" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Citas" Member="Citas">
+    <Type Name="Citas">
+      <Column Name="CitaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCita" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoCita" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Citas_DetalleCitas" Member="DetalleCitas" ThisKey="CitaID" OtherKey="CitaID" Type="DetalleCitas" />
+      <Association Name="Citas_HistorialClientes" Member="HistorialClientes" ThisKey="CitaID" OtherKey="CitaID" Type="HistorialClientes" />
+      <Association Name="Citas_PagosCitas" Member="PagosCitas" ThisKey="CitaID" OtherKey="CitaID" Type="PagosCitas" />
+      <Association Name="Clientes_Citas" Member="Clientes" ThisKey="ClienteID" OtherKey="ClienteID" Type="Clientes" IsForeignKey="true" />
+      <Association Name="Empleados_Citas" Member="Empleados" ThisKey="EmpleadoID" OtherKey="EmpleadoID" Type="Empleados" IsForeignKey="true" />
+      <Association Name="Salas_Citas" Member="Salas" ThisKey="SalaID" OtherKey="SalaID" Type="Salas" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clientes" Member="Clientes">
+    <Type Name="Clientes">
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Clientes_Citas" Member="Citas" ThisKey="ClienteID" OtherKey="ClienteID" Type="Citas" />
+      <Association Name="Clientes_Ventas" Member="Ventas" ThisKey="ClienteID" OtherKey="ClienteID" Type="Ventas" />
+      <Association Name="Clientes_ClientesMembresias" Member="ClientesMembresias" ThisKey="ClienteID" OtherKey="ClienteID" Type="ClientesMembresias" />
+      <Association Name="Clientes_HistorialClientes" Member="HistorialClientes" ThisKey="ClienteID" OtherKey="ClienteID" Type="HistorialClientes" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ventas" Member="Ventas">
+    <Type Name="Ventas">
+      <Column Name="VentaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVenta" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Ventas_DetalleVentas" Member="DetalleVentas" ThisKey="VentaID" OtherKey="VentaID" Type="DetalleVentas" />
+      <Association Name="Clientes_Ventas" Member="Clientes" ThisKey="ClienteID" OtherKey="ClienteID" Type="Clientes" IsForeignKey="true" />
+      <Association Name="Empleados_Ventas" Member="Empleados" ThisKey="EmpleadoID" OtherKey="EmpleadoID" Type="Empleados" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClientesMembresias" Member="ClientesMembresias">
+    <Type Name="ClientesMembresias">
+      <Column Name="ClienteMembresiaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaInicio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaFin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EstadoMembresia" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Clientes_ClientesMembresias" Member="Clientes" ThisKey="ClienteID" OtherKey="ClienteID" Type="Clientes" IsForeignKey="true" />
+      <Association Name="Membresias_ClientesMembresias" Member="Membresias" ThisKey="MembresiaID" OtherKey="MembresiaID" Type="Membresias" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DetalleCitas" Member="DetalleCitas">
+    <Type Name="DetalleCitas">
+      <Column Name="DetalleCitaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioServicio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Association Name="Citas_DetalleCitas" Member="Citas" ThisKey="CitaID" OtherKey="CitaID" Type="Citas" IsForeignKey="true" />
+      <Association Name="Servicios_DetalleCitas" Member="Servicios" ThisKey="ServicioID" OtherKey="ServicioID" Type="Servicios" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DetalleCompras" Member="DetalleCompras">
+    <Type Name="DetalleCompras">
+      <Column Name="DetalleCompraID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompraID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Decimal(21,2)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Productos_DetalleCompras" Member="Productos" ThisKey="ProductoID" OtherKey="ProductoID" Type="Productos" IsForeignKey="true" />
+      <Association Name="Compras_DetalleCompras" Member="Compras" ThisKey="CompraID" OtherKey="CompraID" Type="Compras" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DetalleVentas" Member="DetalleVentas">
+    <Type Name="DetalleVentas">
+      <Column Name="DetalleVentaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="VentaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Decimal(21,2)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Ventas_DetalleVentas" Member="Ventas" ThisKey="VentaID" OtherKey="VentaID" Type="Ventas" IsForeignKey="true" />
+      <Association Name="Productos_DetalleVentas" Member="Productos" ThisKey="ProductoID" OtherKey="ProductoID" Type="Productos" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Empleados" Member="Empleados">
+    <Type Name="Empleados">
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Cargo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaContratacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Empleados_Citas" Member="Citas" ThisKey="EmpleadoID" OtherKey="EmpleadoID" Type="Citas" />
+      <Association Name="Empleados_Ventas" Member="Ventas" ThisKey="EmpleadoID" OtherKey="EmpleadoID" Type="Ventas" />
+      <Association Name="Empleados_TurnosEmpleados" Member="TurnosEmpleados" ThisKey="EmpleadoID" OtherKey="EmpleadoID" Type="TurnosEmpleados" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GastosOperativos" Member="GastosOperativos">
+    <Type Name="GastosOperativos">
+      <Column Name="GastoID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TipoGasto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="FechaGasto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comprobante" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Proveedores_GastosOperativos" Member="Proveedores" ThisKey="ProveedorID" OtherKey="ProveedorID" Type="Proveedores" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HistorialClientes" Member="HistorialClientes">
+    <Type Name="HistorialClientes">
+      <Column Name="HistorialID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVisita" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Calificacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AlergiasProcedimiento" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ResultadosTratamiento" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Citas_HistorialClientes" Member="Citas" ThisKey="CitaID" OtherKey="CitaID" Type="Citas" IsForeignKey="true" />
+      <Association Name="Clientes_HistorialClientes" Member="Clientes" ThisKey="ClienteID" OtherKey="ClienteID" Type="Clientes" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Membresias" Member="Membresias">
+    <Type Name="Membresias">
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreMembresia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DuracionMeses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Membresias_ClientesMembresias" Member="ClientesMembresias" ThisKey="MembresiaID" OtherKey="MembresiaID" Type="ClientesMembresias" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PagosCitas" Member="PagosCitas">
+    <Type Name="PagosCitas">
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Referencia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EstadoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="Citas_PagosCitas" Member="Citas" ThisKey="CitaID" OtherKey="CitaID" Type="Citas" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Productos" Member="Productos">
+    <Type Name="Productos">
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreProducto" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Marca" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StockMinimo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Productos_DetalleCompras" Member="DetalleCompras" ThisKey="ProductoID" OtherKey="ProductoID" Type="DetalleCompras" />
+      <Association Name="Productos_DetalleVentas" Member="DetalleVentas" ThisKey="ProductoID" OtherKey="ProductoID" Type="DetalleVentas" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Proveedores" Member="Proveedores">
+    <Type Name="Proveedores">
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreProveedor" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Contacto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Proveedores_GastosOperativos" Member="GastosOperativos" ThisKey="ProveedorID" OtherKey="ProveedorID" Type="GastosOperativos" />
+      <Association Name="Proveedores_Compras" Member="Compras" ThisKey="ProveedorID" OtherKey="ProveedorID" Type="Compras" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Salas" Member="Salas">
+    <Type Name="Salas">
+      <Column Name="SalaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreSala" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TipoSala" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Capacidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Salas_Citas" Member="Citas" ThisKey="SalaID" OtherKey="SalaID" Type="Citas" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Servicios" Member="Servicios">
+    <Type Name="Servicios">
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NombreServicio" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Duracion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Servicios_DetalleCitas" Member="DetalleCitas" ThisKey="ServicioID" OtherKey="ServicioID" Type="DetalleCitas" />
+      <Association Name="CategoriasServicios_Servicios" Member="CategoriasServicios" ThisKey="CategoriaID" OtherKey="CategoriaID" Type="CategoriasServicios" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TurnosEmpleados" Member="TurnosEmpleados">
+    <Type Name="TurnosEmpleados">
+      <Column Name="TurnoID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiaSemana" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="TipoTurno" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Empleados_TurnosEmpleados" Member="Empleados" ThisKey="EmpleadoID" OtherKey="EmpleadoID" Type="Empleados" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Compras" Member="Compras">
+    <Type Name="Compras">
+      <Column Name="CompraID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCompra" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="EstadoCompra" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="Compras_DetalleCompras" Member="DetalleCompras" ThisKey="CompraID" OtherKey="CompraID" Type="DetalleCompras" />
+      <Association Name="Proveedores_Compras" Member="Proveedores" ThisKey="ProveedorID" OtherKey="ProveedorID" Type="Proveedores" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_PagosCitas_Citas_Clientes" Member="VW_PagosCitas_Citas_Clientes">
+    <Type Name="VW_PagosCitas_Citas_Clientes">
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cliente" Type="System.String" DbType="NVarChar(201) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Referencia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EstadoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.CP_EliminarCategoriasServicios" Method="CP_EliminarCategoriasServicios">
+    <Parameter Name="CategoriaID" Parameter="categoriaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarCategoriasServiciosResult">
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCategoria" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarVentas" Method="CP_EliminarVentas">
+    <Parameter Name="VentaID" Parameter="ventaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarVentasResult">
+      <Column Name="VentaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVenta" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarCitas" Method="CP_EliminarCitas">
+    <Parameter Name="CitaID" Parameter="citaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarCitasResult">
+      <Column Name="CitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCita" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoCita" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarClientes" Method="CP_EliminarClientes">
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarClientesResult">
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarClientesMembresias" Method="CP_EliminarClientesMembresias">
+    <Parameter Name="ClienteMembresiaID" Parameter="clienteMembresiaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarClientesMembresiasResult">
+      <Column Name="ClienteMembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaInicio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaFin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EstadoMembresia" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarCompras" Method="CP_EliminarCompras">
+    <Parameter Name="CompraID" Parameter="compraID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarComprasResult">
+      <Column Name="CompraID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCompra" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="EstadoCompra" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarDetalleCitas" Method="CP_EliminarDetalleCitas">
+    <Parameter Name="DetalleCitaID" Parameter="detalleCitaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarDetalleCitasResult">
+      <Column Name="DetalleCitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioServicio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarDetalleCompras" Method="CP_EliminarDetalleCompras">
+    <Parameter Name="DetalleCompraID" Parameter="detalleCompraID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarDetalleComprasResult">
+      <Column Name="DetalleCompraID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompraID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Decimal(21,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarDetalleVentas" Method="CP_EliminarDetalleVentas">
+    <Parameter Name="DetalleVentaID" Parameter="detalleVentaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarDetalleVentasResult">
+      <Column Name="DetalleVentaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VentaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Decimal(21,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarEmpleados" Method="CP_EliminarEmpleados">
+    <Parameter Name="EmpleadoID" Parameter="empleadoID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarEmpleadosResult">
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Cargo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaContratacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarGastosOperativos" Method="CP_EliminarGastosOperativos">
+    <Parameter Name="GastoID" Parameter="gastoID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarGastosOperativosResult">
+      <Column Name="GastoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TipoGasto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="FechaGasto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comprobante" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarHistorialClientes" Method="CP_EliminarHistorialClientes">
+    <Parameter Name="HistorialID" Parameter="historialID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarHistorialClientesResult">
+      <Column Name="HistorialID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVisita" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Calificacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AlergiasProcedimiento" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ResultadosTratamiento" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarMembresias" Method="CP_EliminarMembresias">
+    <Parameter Name="MembresiaID" Parameter="membresiaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarMembresiasResult">
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreMembresia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DuracionMeses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarPagosCitas" Method="CP_EliminarPagosCitas">
+    <Parameter Name="PagoID" Parameter="pagoID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarPagosCitasResult">
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Referencia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EstadoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarProductos" Method="CP_EliminarProductos">
+    <Parameter Name="ProductoID" Parameter="productoID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarProductosResult">
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProducto" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Marca" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StockMinimo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarProveedores" Method="CP_EliminarProveedores">
+    <Parameter Name="ProveedorID" Parameter="proveedorID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarProveedoresResult">
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProveedor" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Contacto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarSalas" Method="CP_EliminarSalas">
+    <Parameter Name="SalaID" Parameter="salaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarSalasResult">
+      <Column Name="SalaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreSala" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TipoSala" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Capacidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarServicios" Method="CP_EliminarServicios">
+    <Parameter Name="ServicioID" Parameter="servicioID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarServiciosResult">
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NombreServicio" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Duracion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarTurnosEmpleados" Method="CP_EliminarTurnosEmpleados">
+    <Parameter Name="TurnoID" Parameter="turnoID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_EliminarTurnosEmpleadosResult">
+      <Column Name="TurnoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiaSemana" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="TipoTurno" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarCategoriasServicios" Method="CP_InsertarCategoriasServicios">
+    <Parameter Name="CategoriaID" Parameter="categoriaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreCategoria" Parameter="nombreCategoria" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_InsertarCategoriasServiciosResult">
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCategoria" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarVentas" Method="CP_InsertarVentas">
+    <Parameter Name="VentaID" Parameter="ventaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EmpleadoID" Parameter="empleadoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaVenta" Parameter="fechaVenta" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Total" Parameter="total" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="MetodoPago" Parameter="metodoPago" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_InsertarVentasResult">
+      <Column Name="VentaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVenta" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarCitas" Method="CP_InsertarCitas">
+    <Parameter Name="CitaID" Parameter="citaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EmpleadoID" Parameter="empleadoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SalaID" Parameter="salaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaCita" Parameter="fechaCita" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="HoraInicio" Parameter="horaInicio" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="HoraFin" Parameter="horaFin" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="EstadoCita" Parameter="estadoCita" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Observaciones" Parameter="observaciones" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="FechaCreacion" Parameter="fechaCreacion" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_InsertarCitasResult">
+      <Column Name="CitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCita" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoCita" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarClientes" Method="CP_InsertarClientes">
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="FechaNacimiento" Parameter="fechaNacimiento" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_InsertarClientesResult">
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarClientesMembresias" Method="CP_InsertarClientesMembresias">
+    <Parameter Name="ClienteMembresiaID" Parameter="clienteMembresiaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MembresiaID" Parameter="membresiaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaInicio" Parameter="fechaInicio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FechaFin" Parameter="fechaFin" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EstadoMembresia" Parameter="estadoMembresia" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_InsertarClientesMembresiasResult">
+      <Column Name="ClienteMembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaInicio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaFin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EstadoMembresia" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarCompras" Method="CP_InsertarCompras">
+    <Parameter Name="CompraID" Parameter="compraID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProveedorID" Parameter="proveedorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaCompra" Parameter="fechaCompra" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Total" Parameter="total" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="EstadoCompra" Parameter="estadoCompra" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Observaciones" Parameter="observaciones" Type="System.String" DbType="NVarChar(500)" />
+    <ElementType Name="CP_InsertarComprasResult">
+      <Column Name="CompraID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCompra" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="EstadoCompra" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarDetalleCitas" Method="CP_InsertarDetalleCitas">
+    <Parameter Name="DetalleCitaID" Parameter="detalleCitaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CitaID" Parameter="citaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ServicioID" Parameter="servicioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrecioServicio" Parameter="precioServicio" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Descuento" Parameter="descuento" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <ElementType Name="CP_InsertarDetalleCitasResult">
+      <Column Name="DetalleCitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioServicio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarDetalleCompras" Method="CP_InsertarDetalleCompras">
+    <Parameter Name="DetalleCompraID" Parameter="detalleCompraID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CompraID" Parameter="compraID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductoID" Parameter="productoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Cantidad" Parameter="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrecioUnitario" Parameter="precioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarDetalleVentas" Method="CP_InsertarDetalleVentas">
+    <Parameter Name="DetalleVentaID" Parameter="detalleVentaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VentaID" Parameter="ventaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductoID" Parameter="productoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Cantidad" Parameter="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrecioUnitario" Parameter="precioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarEmpleados" Method="CP_InsertarEmpleados">
+    <Parameter Name="EmpleadoID" Parameter="empleadoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Cargo" Parameter="cargo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FechaContratacion" Parameter="fechaContratacion" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Salario" Parameter="salario" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_InsertarEmpleadosResult">
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Cargo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaContratacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarGastosOperativos" Method="CP_InsertarGastosOperativos">
+    <Parameter Name="GastoID" Parameter="gastoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProveedorID" Parameter="proveedorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TipoGasto" Parameter="tipoGasto" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Monto" Parameter="monto" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="FechaGasto" Parameter="fechaGasto" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="MetodoPago" Parameter="metodoPago" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Comprobante" Parameter="comprobante" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_InsertarGastosOperativosResult">
+      <Column Name="GastoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TipoGasto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="FechaGasto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comprobante" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarHistorialClientes" Method="CP_InsertarHistorialClientes">
+    <Parameter Name="HistorialID" Parameter="historialID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CitaID" Parameter="citaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaVisita" Parameter="fechaVisita" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Observaciones" Parameter="observaciones" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="Calificacion" Parameter="calificacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AlergiasProcedimiento" Parameter="alergiasProcedimiento" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="ResultadosTratamiento" Parameter="resultadosTratamiento" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_InsertarHistorialClientesResult">
+      <Column Name="HistorialID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVisita" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Calificacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AlergiasProcedimiento" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ResultadosTratamiento" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarMembresias" Method="CP_InsertarMembresias">
+    <Parameter Name="MembresiaID" Parameter="membresiaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreMembresia" Parameter="nombreMembresia" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="DuracionMeses" Parameter="duracionMeses" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Precio" Parameter="precio" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Descuento" Parameter="descuento" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_InsertarMembresiasResult">
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreMembresia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DuracionMeses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarPagosCitas" Method="CP_InsertarPagosCitas">
+    <Parameter Name="PagoID" Parameter="pagoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CitaID" Parameter="citaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaPago" Parameter="fechaPago" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Monto" Parameter="monto" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="MetodoPago" Parameter="metodoPago" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Referencia" Parameter="referencia" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="EstadoPago" Parameter="estadoPago" Type="System.String" DbType="NVarChar(20)" />
+    <ElementType Name="CP_InsertarPagosCitasResult">
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Referencia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EstadoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarProductos" Method="CP_InsertarProductos">
+    <Parameter Name="ProductoID" Parameter="productoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreProducto" Parameter="nombreProducto" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Marca" Parameter="marca" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="PrecioUnitario" Parameter="precioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Stock" Parameter="stock" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StockMinimo" Parameter="stockMinimo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_InsertarProductosResult">
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProducto" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Marca" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StockMinimo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarProveedores" Method="CP_InsertarProveedores">
+    <Parameter Name="ProveedorID" Parameter="proveedorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreProveedor" Parameter="nombreProveedor" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Contacto" Parameter="contacto" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_InsertarProveedoresResult">
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProveedor" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Contacto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarSalas" Method="CP_InsertarSalas">
+    <Parameter Name="SalaID" Parameter="salaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreSala" Parameter="nombreSala" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="TipoSala" Parameter="tipoSala" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Capacidad" Parameter="capacidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_InsertarSalasResult">
+      <Column Name="SalaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreSala" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TipoSala" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Capacidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarServicios" Method="CP_InsertarServicios">
+    <Parameter Name="ServicioID" Parameter="servicioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CategoriaID" Parameter="categoriaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreServicio" Parameter="nombreServicio" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Duracion" Parameter="duracion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Precio" Parameter="precio" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_InsertarServiciosResult">
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NombreServicio" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Duracion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_InsertarTurnosEmpleados" Method="CP_InsertarTurnosEmpleados">
+    <Parameter Name="TurnoID" Parameter="turnoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EmpleadoID" Parameter="empleadoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DiaSemana" Parameter="diaSemana" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="HoraInicio" Parameter="horaInicio" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="HoraFin" Parameter="horaFin" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="TipoTurno" Parameter="tipoTurno" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_InsertarTurnosEmpleadosResult">
+      <Column Name="TurnoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiaSemana" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="TipoTurno" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarCategoriasServicios" Method="CP_ListarCategoriasServicios">
+    <ElementType Name="CP_ListarCategoriasServiciosResult">
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCategoria" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarVentasFiltro" Method="CP_ListarVentasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarVentasFiltroResult">
+      <Column Name="VentaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVenta" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarCategoriasServiciosFiltro" Method="CP_ListarCategoriasServiciosFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarCategoriasServiciosFiltroResult">
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCategoria" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarCitas" Method="CP_ListarCitas">
+    <ElementType Name="CP_ListarCitasResult">
+      <Column Name="CitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCita" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoCita" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarCitasFiltro" Method="CP_ListarCitasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarCitasFiltroResult">
+      <Column Name="CitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCita" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoCita" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarClientes" Method="CP_ListarClientes">
+    <ElementType Name="CP_ListarClientesResult">
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarClientesFiltro" Method="CP_ListarClientesFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarClientesFiltroResult">
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarClientesMembresias" Method="CP_ListarClientesMembresias">
+    <ElementType Name="CP_ListarClientesMembresiasResult">
+      <Column Name="ClienteMembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaInicio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaFin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EstadoMembresia" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarClientesMembresiasFiltro" Method="CP_ListarClientesMembresiasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarClientesMembresiasFiltroResult">
+      <Column Name="ClienteMembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaInicio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaFin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EstadoMembresia" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarCompras" Method="CP_ListarCompras">
+    <ElementType Name="CP_ListarComprasResult">
+      <Column Name="CompraID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCompra" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="EstadoCompra" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarComprasFiltro" Method="CP_ListarComprasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarComprasFiltroResult">
+      <Column Name="CompraID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCompra" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="EstadoCompra" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarDetalleCitas" Method="CP_ListarDetalleCitas">
+    <ElementType Name="CP_ListarDetalleCitasResult">
+      <Column Name="DetalleCitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioServicio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarDetalleCitasFiltro" Method="CP_ListarDetalleCitasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarDetalleCitasFiltroResult">
+      <Column Name="DetalleCitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioServicio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarDetalleCompras" Method="CP_ListarDetalleCompras">
+    <ElementType Name="CP_ListarDetalleComprasResult">
+      <Column Name="DetalleCompraID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompraID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Decimal(21,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarDetalleComprasFiltro" Method="CP_ListarDetalleComprasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarDetalleComprasFiltroResult">
+      <Column Name="DetalleCompraID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompraID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Decimal(21,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarDetalleVentas" Method="CP_ListarDetalleVentas">
+    <ElementType Name="CP_ListarDetalleVentasResult">
+      <Column Name="DetalleVentaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VentaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Decimal(21,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarDetalleVentasFiltro" Method="CP_ListarDetalleVentasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarDetalleVentasFiltroResult">
+      <Column Name="DetalleVentaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VentaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Decimal(21,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarEmpleados" Method="CP_ListarEmpleados">
+    <ElementType Name="CP_ListarEmpleadosResult">
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Cargo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaContratacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarEmpleadosFiltro" Method="CP_ListarEmpleadosFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarEmpleadosFiltroResult">
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Cargo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaContratacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarGastosOperativos" Method="CP_ListarGastosOperativos">
+    <ElementType Name="CP_ListarGastosOperativosResult">
+      <Column Name="GastoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TipoGasto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="FechaGasto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comprobante" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarGastosOperativosFiltro" Method="CP_ListarGastosOperativosFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarGastosOperativosFiltroResult">
+      <Column Name="GastoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TipoGasto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="FechaGasto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comprobante" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarHistorialClientes" Method="CP_ListarHistorialClientes">
+    <ElementType Name="CP_ListarHistorialClientesResult">
+      <Column Name="HistorialID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVisita" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Calificacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AlergiasProcedimiento" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ResultadosTratamiento" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarHistorialClientesFiltro" Method="CP_ListarHistorialClientesFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarHistorialClientesFiltroResult">
+      <Column Name="HistorialID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVisita" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Calificacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AlergiasProcedimiento" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ResultadosTratamiento" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarMembresias" Method="CP_ListarMembresias">
+    <ElementType Name="CP_ListarMembresiasResult">
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreMembresia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DuracionMeses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarMembresiasFiltro" Method="CP_ListarMembresiasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarMembresiasFiltroResult">
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreMembresia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DuracionMeses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarPagosCitas" Method="CP_ListarPagosCitas">
+    <ElementType Name="CP_ListarPagosCitasResult">
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Referencia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EstadoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarPagosCitasFiltro" Method="CP_ListarPagosCitasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarPagosCitasFiltroResult">
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Referencia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EstadoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarProductos" Method="CP_ListarProductos">
+    <ElementType Name="CP_ListarProductosResult">
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProducto" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Marca" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StockMinimo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarProductosFiltro" Method="CP_ListarProductosFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarProductosFiltroResult">
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProducto" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Marca" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StockMinimo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarProveedores" Method="CP_ListarProveedores">
+    <ElementType Name="CP_ListarProveedoresResult">
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProveedor" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Contacto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarProveedoresFiltro" Method="CP_ListarProveedoresFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarProveedoresFiltroResult">
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProveedor" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Contacto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarSalas" Method="CP_ListarSalas">
+    <ElementType Name="CP_ListarSalasResult">
+      <Column Name="SalaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreSala" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TipoSala" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Capacidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarSalasFiltro" Method="CP_ListarSalasFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarSalasFiltroResult">
+      <Column Name="SalaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreSala" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TipoSala" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Capacidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarServicios" Method="CP_ListarServicios">
+    <ElementType Name="CP_ListarServiciosResult">
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NombreServicio" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Duracion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarServiciosFiltro" Method="CP_ListarServiciosFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarServiciosFiltroResult">
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NombreServicio" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Duracion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarTurnosEmpleados" Method="CP_ListarTurnosEmpleados">
+    <ElementType Name="CP_ListarTurnosEmpleadosResult">
+      <Column Name="TurnoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiaSemana" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="TipoTurno" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarTurnosEmpleadosFiltro" Method="CP_ListarTurnosEmpleadosFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarTurnosEmpleadosFiltroResult">
+      <Column Name="TurnoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiaSemana" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="TipoTurno" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarVentas" Method="CP_ListarVentas">
+    <ElementType Name="CP_ListarVentasResult">
+      <Column Name="VentaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVenta" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarCategoriasServicios" Method="CP_ModificarCategoriasServicios">
+    <Parameter Name="CategoriaID" Parameter="categoriaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreCategoria" Parameter="nombreCategoria" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_ModificarCategoriasServiciosResult">
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCategoria" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarVentas" Method="CP_ModificarVentas">
+    <Parameter Name="VentaID" Parameter="ventaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EmpleadoID" Parameter="empleadoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaVenta" Parameter="fechaVenta" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Total" Parameter="total" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="MetodoPago" Parameter="metodoPago" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_ModificarVentasResult">
+      <Column Name="VentaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVenta" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarCitas" Method="CP_ModificarCitas">
+    <Parameter Name="CitaID" Parameter="citaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EmpleadoID" Parameter="empleadoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SalaID" Parameter="salaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaCita" Parameter="fechaCita" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="HoraInicio" Parameter="horaInicio" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="HoraFin" Parameter="horaFin" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="EstadoCita" Parameter="estadoCita" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Observaciones" Parameter="observaciones" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="FechaCreacion" Parameter="fechaCreacion" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_ModificarCitasResult">
+      <Column Name="CitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCita" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoCita" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarClientes" Method="CP_ModificarClientes">
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="FechaNacimiento" Parameter="fechaNacimiento" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_ModificarClientesResult">
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarClientesMembresias" Method="CP_ModificarClientesMembresias">
+    <Parameter Name="ClienteMembresiaID" Parameter="clienteMembresiaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MembresiaID" Parameter="membresiaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaInicio" Parameter="fechaInicio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FechaFin" Parameter="fechaFin" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EstadoMembresia" Parameter="estadoMembresia" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_ModificarClientesMembresiasResult">
+      <Column Name="ClienteMembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaInicio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FechaFin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EstadoMembresia" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarCompras" Method="CP_ModificarCompras">
+    <Parameter Name="CompraID" Parameter="compraID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProveedorID" Parameter="proveedorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaCompra" Parameter="fechaCompra" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Total" Parameter="total" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="EstadoCompra" Parameter="estadoCompra" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Observaciones" Parameter="observaciones" Type="System.String" DbType="NVarChar(500)" />
+    <ElementType Name="CP_ModificarComprasResult">
+      <Column Name="CompraID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaCompra" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="EstadoCompra" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarDetalleCitas" Method="CP_ModificarDetalleCitas">
+    <Parameter Name="DetalleCitaID" Parameter="detalleCitaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CitaID" Parameter="citaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ServicioID" Parameter="servicioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrecioServicio" Parameter="precioServicio" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Descuento" Parameter="descuento" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <ElementType Name="CP_ModificarDetalleCitasResult">
+      <Column Name="DetalleCitaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioServicio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarDetalleCompras" Method="CP_ModificarDetalleCompras">
+    <Parameter Name="DetalleCompraID" Parameter="detalleCompraID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CompraID" Parameter="compraID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductoID" Parameter="productoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Cantidad" Parameter="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrecioUnitario" Parameter="precioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ModificarDetalleVentas" Method="CP_ModificarDetalleVentas">
+    <Parameter Name="DetalleVentaID" Parameter="detalleVentaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VentaID" Parameter="ventaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductoID" Parameter="productoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Cantidad" Parameter="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrecioUnitario" Parameter="precioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ModificarEmpleados" Method="CP_ModificarEmpleados">
+    <Parameter Name="EmpleadoID" Parameter="empleadoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Cargo" Parameter="cargo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FechaContratacion" Parameter="fechaContratacion" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Salario" Parameter="salario" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_ModificarEmpleadosResult">
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Cargo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaContratacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarGastosOperativos" Method="CP_ModificarGastosOperativos">
+    <Parameter Name="GastoID" Parameter="gastoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProveedorID" Parameter="proveedorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TipoGasto" Parameter="tipoGasto" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Monto" Parameter="monto" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="FechaGasto" Parameter="fechaGasto" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="MetodoPago" Parameter="metodoPago" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Comprobante" Parameter="comprobante" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_ModificarGastosOperativosResult">
+      <Column Name="GastoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TipoGasto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="FechaGasto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comprobante" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarHistorialClientes" Method="CP_ModificarHistorialClientes">
+    <Parameter Name="HistorialID" Parameter="historialID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClienteID" Parameter="clienteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CitaID" Parameter="citaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaVisita" Parameter="fechaVisita" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Observaciones" Parameter="observaciones" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="Calificacion" Parameter="calificacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AlergiasProcedimiento" Parameter="alergiasProcedimiento" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="ResultadosTratamiento" Parameter="resultadosTratamiento" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_ModificarHistorialClientesResult">
+      <Column Name="HistorialID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVisita" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Calificacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AlergiasProcedimiento" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ResultadosTratamiento" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarMembresias" Method="CP_ModificarMembresias">
+    <Parameter Name="MembresiaID" Parameter="membresiaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreMembresia" Parameter="nombreMembresia" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="DuracionMeses" Parameter="duracionMeses" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Precio" Parameter="precio" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Descuento" Parameter="descuento" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_ModificarMembresiasResult">
+      <Column Name="MembresiaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreMembresia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DuracionMeses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarPagosCitas" Method="CP_ModificarPagosCitas">
+    <Parameter Name="PagoID" Parameter="pagoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CitaID" Parameter="citaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaPago" Parameter="fechaPago" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Monto" Parameter="monto" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="MetodoPago" Parameter="metodoPago" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Referencia" Parameter="referencia" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="EstadoPago" Parameter="estadoPago" Type="System.String" DbType="NVarChar(20)" />
+    <ElementType Name="CP_ModificarPagosCitasResult">
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Referencia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EstadoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarProductos" Method="CP_ModificarProductos">
+    <Parameter Name="ProductoID" Parameter="productoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreProducto" Parameter="nombreProducto" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Marca" Parameter="marca" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="PrecioUnitario" Parameter="precioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Stock" Parameter="stock" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StockMinimo" Parameter="stockMinimo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_ModificarProductosResult">
+      <Column Name="ProductoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProducto" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Marca" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PrecioUnitario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StockMinimo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarProveedores" Method="CP_ModificarProveedores">
+    <Parameter Name="ProveedorID" Parameter="proveedorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreProveedor" Parameter="nombreProveedor" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Contacto" Parameter="contacto" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_ModificarProveedoresResult">
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreProveedor" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Contacto" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarSalas" Method="CP_ModificarSalas">
+    <Parameter Name="SalaID" Parameter="salaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreSala" Parameter="nombreSala" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="TipoSala" Parameter="tipoSala" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Capacidad" Parameter="capacidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_ModificarSalasResult">
+      <Column Name="SalaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreSala" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TipoSala" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Capacidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarServicios" Method="CP_ModificarServicios">
+    <Parameter Name="ServicioID" Parameter="servicioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CategoriaID" Parameter="categoriaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NombreServicio" Parameter="nombreServicio" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Duracion" Parameter="duracion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Precio" Parameter="precio" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CP_ModificarServiciosResult">
+      <Column Name="ServicioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoriaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NombreServicio" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Duracion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ModificarTurnosEmpleados" Method="CP_ModificarTurnosEmpleados">
+    <Parameter Name="TurnoID" Parameter="turnoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EmpleadoID" Parameter="empleadoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DiaSemana" Parameter="diaSemana" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="HoraInicio" Parameter="horaInicio" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="HoraFin" Parameter="horaFin" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="TipoTurno" Parameter="tipoTurno" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FechaRegistro" Parameter="fechaRegistro" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_ModificarTurnosEmpleadosResult">
+      <Column Name="TurnoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmpleadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiaSemana" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="HoraInicio" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="HoraFin" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="TipoTurno" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarPagosCitasVistaFiltro" Method="CP_ListarPagosCitasVistaFiltro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="CP_ListarPagosCitasVistaFiltroResult">
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CitaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClienteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cliente" Type="System.String" DbType="NVarChar(201) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaPago" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Referencia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EstadoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

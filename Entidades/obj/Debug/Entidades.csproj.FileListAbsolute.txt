@@ -1,0 +1,12 @@
+D:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\bin\Debug\Entidades.dll
+D:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\bin\Debug\Entidades.pdb
+D:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+D:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+D:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\obj\Debug\Entidades.dll
+D:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\obj\Debug\Entidades.pdb
+C:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\bin\Debug\Entidades.dll
+C:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\bin\Debug\Entidades.pdb
+C:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\obj\Debug\Entidades.dll
+C:\Proyecto_Bravo-Gomez\SistemaSpa\Entidades\obj\Debug\Entidades.pdb

@@ -1,0 +1,162 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{213EBA9E-6740-41FF-807E-191713C88811}|Presentacion\\Presentacion.csproj|d:\\proyecto_bravo-gomez\\sistemaspa\\presentacion\\administracion\\frmadminpagoscitas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{213EBA9E-6740-41FF-807E-191713C88811}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\administracion\\frmadminpagoscitas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60D927F0-2D24-45F5-A61B-9BA07F38A188}|Datos\\Datos.csproj|d:\\proyecto_bravo-gomez\\sistemaspa\\datos\\administracion\\pagoscitascd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60D927F0-2D24-45F5-A61B-9BA07F38A188}|Datos\\Datos.csproj|solutionrelative:datos\\administracion\\pagoscitascd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{213EBA9E-6740-41FF-807E-191713C88811}|Presentacion\\Presentacion.csproj|d:\\proyecto_bravo-gomez\\sistemaspa\\presentacion\\administracion\\frmeditpagocitas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{213EBA9E-6740-41FF-807E-191713C88811}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\administracion\\frmeditpagocitas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19A0D6D4-68C5-4DC9-867A-D457AF32C23E}|Logica\\Logica.csproj|d:\\proyecto_bravo-gomez\\sistemaspa\\logica\\vistas\\pagoscitas_citas_clientesln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19A0D6D4-68C5-4DC9-867A-D457AF32C23E}|Logica\\Logica.csproj|solutionrelative:logica\\vistas\\pagoscitas_citas_clientesln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60D927F0-2D24-45F5-A61B-9BA07F38A188}|Datos\\Datos.csproj|d:\\proyecto_bravo-gomez\\sistemaspa\\datos\\vistas\\pagocitas_citas_clientescd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60D927F0-2D24-45F5-A61B-9BA07F38A188}|Datos\\Datos.csproj|solutionrelative:datos\\vistas\\pagocitas_citas_clientescd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{213EBA9E-6740-41FF-807E-191713C88811}|Presentacion\\Presentacion.csproj|d:\\proyecto_bravo-gomez\\sistemaspa\\presentacion\\administracion\\frmadminpagoscitas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{213EBA9E-6740-41FF-807E-191713C88811}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\administracion\\frmadminpagoscitas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{213EBA9E-6740-41FF-807E-191713C88811}|Presentacion\\Presentacion.csproj|d:\\proyecto_bravo-gomez\\sistemaspa\\presentacion\\administracion\\frmeditpagocitas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{213EBA9E-6740-41FF-807E-191713C88811}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\administracion\\frmeditpagocitas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9BB28E1B-530D-445A-ACE2-8E3A2E163237}|Entidades\\Entidades.csproj|d:\\proyecto_bravo-gomez\\sistemaspa\\entidades\\vistas\\pagocitas_citas_cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9BB28E1B-530D-445A-ACE2-8E3A2E163237}|Entidades\\Entidades.csproj|solutionrelative:entidades\\vistas\\pagocitas_citas_cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PagosCitasCD.cs",
+              "DocumentMoniker": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Datos\\Administracion\\PagosCitasCD.cs",
+              "RelativeDocumentMoniker": "Datos\\Administracion\\PagosCitasCD.cs",
+              "ToolTip": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Datos\\Administracion\\PagosCitasCD.cs",
+              "RelativeToolTip": "Datos\\Administracion\\PagosCitasCD.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T13:30:31.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmEditPagoCitas.cs",
+              "DocumentMoniker": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Presentacion\\Administracion\\frmEditPagoCitas.cs",
+              "RelativeDocumentMoniker": "Presentacion\\Administracion\\frmEditPagoCitas.cs",
+              "ToolTip": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Presentacion\\Administracion\\frmEditPagoCitas.cs",
+              "RelativeToolTip": "Presentacion\\Administracion\\frmEditPagoCitas.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAawBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T13:20:50.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "frmEditPagoCitas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Presentacion\\Administracion\\frmEditPagoCitas.cs",
+              "RelativeDocumentMoniker": "Presentacion\\Administracion\\frmEditPagoCitas.cs",
+              "ToolTip": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Presentacion\\Administracion\\frmEditPagoCitas.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Presentacion\\Administracion\\frmEditPagoCitas.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T13:22:32.277Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmAdminPagosCitas.cs",
+              "DocumentMoniker": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Presentacion\\Administracion\\frmAdminPagosCitas.cs",
+              "RelativeDocumentMoniker": "Presentacion\\Administracion\\frmAdminPagosCitas.cs",
+              "ToolTip": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Presentacion\\Administracion\\frmAdminPagosCitas.cs",
+              "RelativeToolTip": "Presentacion\\Administracion\\frmAdminPagosCitas.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABUAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T13:21:28.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmAdminPagosCitas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Presentacion\\Administracion\\frmAdminPagosCitas.cs",
+              "RelativeDocumentMoniker": "Presentacion\\Administracion\\frmAdminPagosCitas.cs",
+              "ToolTip": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Presentacion\\Administracion\\frmAdminPagosCitas.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Presentacion\\Administracion\\frmAdminPagosCitas.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T13:21:25.388Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PagoCitas_Citas_ClientesCD.cs",
+              "DocumentMoniker": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Datos\\Vistas\\PagoCitas_Citas_ClientesCD.cs",
+              "RelativeDocumentMoniker": "Datos\\Vistas\\PagoCitas_Citas_ClientesCD.cs",
+              "ToolTip": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Datos\\Vistas\\PagoCitas_Citas_ClientesCD.cs",
+              "RelativeToolTip": "Datos\\Vistas\\PagoCitas_Citas_ClientesCD.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T13:19:52.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PagoCitas_Citas_Cliente.cs",
+              "DocumentMoniker": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Entidades\\Vistas\\PagoCitas_Citas_Cliente.cs",
+              "RelativeDocumentMoniker": "Entidades\\Vistas\\PagoCitas_Citas_Cliente.cs",
+              "ToolTip": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Entidades\\Vistas\\PagoCitas_Citas_Cliente.cs",
+              "RelativeToolTip": "Entidades\\Vistas\\PagoCitas_Citas_Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T13:18:42.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PagosCitas_Citas_ClientesLN.cs",
+              "DocumentMoniker": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Logica\\Vistas\\PagosCitas_Citas_ClientesLN.cs",
+              "RelativeDocumentMoniker": "Logica\\Vistas\\PagosCitas_Citas_ClientesLN.cs",
+              "ToolTip": "D:\\Proyecto_Bravo-Gomez\\SistemaSpa\\Logica\\Vistas\\PagosCitas_Citas_ClientesLN.cs",
+              "RelativeToolTip": "Logica\\Vistas\\PagosCitas_Citas_ClientesLN.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T13:18:24.392Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
