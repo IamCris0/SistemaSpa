@@ -9,6 +9,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{0A277E8D-BD7B-474B-BDB9-725346D014E4}|SistemaWebSpa\\SistemaWebSpa.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemawebspa\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{0A277E8D-BD7B-474B-BDB9-725346D014E4}|SistemaWebSpa\\SistemaWebSpa.csproj|solutionrelative:sistemawebspa\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A277E8D-BD7B-474B-BDB9-725346D014E4}|SistemaWebSpa\\SistemaWebSpa.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemawebspa\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A277E8D-BD7B-474B-BDB9-725346D014E4}|SistemaWebSpa\\SistemaWebSpa.csproj|solutionrelative:sistemawebspa\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaWebSpa\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "SistemaWebSpa\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaWebSpa\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "SistemaWebSpa\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T20:29:33.04Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -41,9 +58,10 @@
               "RelativeDocumentMoniker": "SistemaWebSpa\\appsettings.json",
               "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaWebSpa\\appsettings.json",
               "RelativeToolTip": "SistemaWebSpa\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-04T20:13:23.494Z"
+              "WhenOpened": "2026-01-04T20:13:23.494Z",
+              "EditorCaption": ""
             }
           ]
         }
