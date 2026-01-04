@@ -1,0 +1,99 @@
+@model IEnumerable<SistemaSpaWeb.Models.Venta>
+
+@{
+    ViewData["Title"] = "Ventas";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">
+        <i class="bi bi-cart"></i> Gestión de Ventas
+    </h1>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            <i class="bi bi-check-circle"></i> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            <i class="bi bi-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Nueva Venta
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Empleado</th>
+                            <th>Total</th>
+                            <th>Método Pago</th>
+                            <th>Productos</th>
+                            <th>Estado</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var venta in Model)
+                        {
+                            <tr>
+                                <td>@venta.VentaID</td>
+                                <td>@venta.FechaVenta?.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>
+                                    @if (venta.Cliente != null)
+                                    {
+                                        <span>@venta.Cliente.Nombre @venta.Cliente.Apellido</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (venta.Empleado != null)
+                                    {
+                                        <span class="badge bg-info">@venta.Empleado.Nombre</span>
+                                    }
+                                </td>
+                                <td><strong class="text-success">$@(venta.Total?.ToString("N2") ?? "0.00")</strong></td>
+                                <td>
+                                    <span class="badge bg-secondary">@venta.MetodoPago</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">@(venta.DetalleVentas?.Count ?? 0)</span>
+                                </td>
+                                <td>
+                                    <span class="badge @(venta.Estado == "Completada" ? "bg-success" : venta.Estado == "Pendiente" ? "bg-warning text-dark" : "bg-secondary")">
+                                        @venta.Estado
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <a asp-action="Details" asp-route-id="@venta.VentaID" class="btn btn-sm btn-info" title="Ver Detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@venta.VentaID" class="btn btn-sm btn-warning" title="Editar">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@venta.VentaID" class="btn btn-sm btn-danger" title="Eliminar">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

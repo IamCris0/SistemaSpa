@@ -1,0 +1,265 @@
+@model SistemaSpaWeb.Models.Cita
+
+@{
+    ViewData["Title"] = "Detalles de la Cita";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-11">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-calendar-check"></i> Detalles de la Cita #@Model.CitaID
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Columna Izquierda: Información de la Cita -->
+                        <div class="col-md-6">
+                            <h5 class="text-primary border-bottom pb-2">
+                                <i class="bi bi-info-circle"></i> Información de la Cita
+                            </h5>
+                            <dl class="row">
+                                <dt class="col-sm-4">ID Cita</dt>
+                                <dd class="col-sm-8">@Model.CitaID</dd>
+
+                                <dt class="col-sm-4">Fecha</dt>
+                                <dd class="col-sm-8">
+                                    <strong>@Model.FechaCita.ToString("dddd, dd MMMM yyyy")</strong>
+                                </dd>
+
+                                <dt class="col-sm-4">Horario</dt>
+                                <dd class="col-sm-8">
+                                    <i class="bi bi-clock"></i>
+                                    <strong>@Model.HoraInicio.ToString(@"hh\:mm")</strong> - 
+                                    <strong>@Model.HoraFin.ToString(@"hh\:mm")</strong>
+                                    <br />
+                                    <small class="text-muted">
+                                        Duración: @((Model.HoraFin - Model.HoraInicio).Hours) hora(s) 
+                                        @((Model.HoraFin - Model.HoraInicio).Minutes) minuto(s)
+                                    </small>
+                                </dd>
+
+                                <dt class="col-sm-4">Cliente</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.Cliente != null)
+                                    {
+                                        <i class="bi bi-person-circle"></i>
+                                        <strong>@Model.Cliente.Nombre @Model.Cliente.Apellido</strong>
+                                        <br />
+                                        <small class="text-muted">
+                                            <i class="bi bi-envelope"></i> @Model.Cliente.Email
+                                            @if (!string.IsNullOrEmpty(Model.Cliente.Telefono))
+                                            {
+                                                <br />
+                                                <i class="bi bi-telephone"></i> @Model.Cliente.Telefono
+                                            }
+                                        </small>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin asignar</span>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-4">Empleado</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.Empleado != null)
+                                    {
+                                        <i class="bi bi-person-workspace"></i>
+                                        <span>@Model.Empleado.Nombre @Model.Empleado.Apellido</span>
+                                        <br />
+                                        <span class="badge bg-info">@Model.Empleado.Cargo</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin asignar</span>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-4">Sala</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.Sala != null)
+                                    {
+                                        <i class="bi bi-door-open"></i> @Model.Sala.NombreSala
+                                        <br />
+                                        <small class="text-muted">@Model.Sala.TipoSala</small>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin asignar</span>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-4">Estado</dt>
+                                <dd class="col-sm-8">
+                                    @{
+                                        var badgeClass = Model.EstadoCita switch
+                                        {
+                                            "Programada" => "bg-info",
+                                            "Confirmada" => "bg-primary",
+                                            "En Proceso" => "bg-warning text-dark",
+                                            "Completada" => "bg-success",
+                                            "Cancelada" => "bg-danger",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @badgeClass fs-6">@Model.EstadoCita</span>
+                                </dd>
+
+                                <dt class="col-sm-4">Fecha de Creación</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.FechaCreacion.HasValue)
+                                    {
+                                        @Model.FechaCreacion.Value.ToString("dd/MM/yyyy HH:mm")
+                                    }
+                                </dd>
+
+                                @if (!string.IsNullOrEmpty(Model.Observaciones))
+                                {
+                                    <dt class="col-sm-4">Observaciones</dt>
+                                    <dd class="col-sm-8">
+                                        <div class="alert alert-secondary mb-0">
+                                            @Model.Observaciones
+                                        </div>
+                                    </dd>
+                                }
+                            </dl>
+                        </div>
+
+                        <!-- Columna Derecha: Servicios y Pagos -->
+                        <div class="col-md-6">
+                            <!-- Servicios -->
+                            <h5 class="text-primary border-bottom pb-2">
+                                <i class="bi bi-list-check"></i> Servicios de la Cita
+                            </h5>
+                            @if (Model.DetalleCitas != null && Model.DetalleCitas.Any())
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Servicio</th>
+                                                <th class="text-end">Precio</th>
+                                                <th class="text-end">Desc.</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var detalle in Model.DetalleCitas)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <strong>@detalle.Servicio?.NombreServicio</strong>
+                                                        <br />
+                                                        <small class="text-muted">
+                                                            @detalle.Servicio?.Duracion min
+                                                        </small>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        $@(detalle.PrecioServicio?.ToString("N2") ?? "0.00")
+                                                    </td>
+                                                    <td class="text-end">
+                                                        @(detalle.Descuento?.ToString("N0") ?? "0")%
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot class="table-light">
+                                            <tr>
+                                                <td colspan="2"><strong>Total Servicios:</strong></td>
+                                                <td class="text-end">
+                                                    <strong>
+                                                        $@Model.DetalleCitas.Sum(d => (d.PrecioServicio ?? 0) * (1 - (d.Descuento ?? 0) / 100)).ToString("N2")
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning">
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                    No se han agregado servicios a esta cita.
+                                </div>
+                            }
+
+                            <!-- Pagos -->
+                            <h5 class="text-primary border-bottom pb-2 mt-4">
+                                <i class="bi bi-cash-coin"></i> Pagos Registrados
+                            </h5>
+                            @if (Model.PagosCitas != null && Model.PagosCitas.Any())
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Método</th>
+                                                <th class="text-end">Monto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var pago in Model.PagosCitas)
+                                            {
+                                                <tr>
+                                                    <td>@pago.FechaPago?.ToString("dd/MM/yyyy")</td>
+                                                    <td>
+                                                        <span class="badge bg-secondary">
+                                                            @pago.MetodoPago
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <strong>$@(pago.Monto?.ToString("N2") ?? "0.00")</strong>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot class="table-light">
+                                            <tr>
+                                                <td colspan="2"><strong>Total Pagado:</strong></td>
+                                                <td class="text-end">
+                                                    <strong class="text-success">
+                                                        $@Model.PagosCitas.Sum(p => p.Monto ?? 0).ToString("N2")
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">
+                                    <i class="bi bi-info-circle"></i>
+                                    No se han registrado pagos para esta cita.
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver al Listado
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@Model.CitaID" class="btn btn-warning">
+                            <i class="bi bi-pencil"></i> Editar Cita
+                        </a>
+                        <a asp-controller="DetalleCitas" asp-action="Create" asp-route-citaId="@Model.CitaID" 
+                           class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> Agregar Servicio
+                        </a>
+                        <a asp-controller="PagosCitas" asp-action="Create" asp-route-citaId="@Model.CitaID" 
+                           class="btn btn-success">
+                            <i class="bi bi-cash-stack"></i> Registrar Pago
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

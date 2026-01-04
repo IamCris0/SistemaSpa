@@ -1,0 +1,127 @@
+@model SistemaSpaWeb.Models.Venta
+
+@{
+    ViewData["Title"] = "Detalles de Venta";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-receipt"></i> Detalles de la Venta #@Model.VentaID
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-primary"><i class="bi bi-info-circle"></i> Información General</h5>
+                            <dl class="row">
+                                <dt class="col-sm-5">ID Venta</dt>
+                                <dd class="col-sm-7">@Model.VentaID</dd>
+
+                                <dt class="col-sm-5">Fecha</dt>
+                                <dd class="col-sm-7">
+                                    <strong>@Model.FechaVenta?.ToString("dd/MM/yyyy HH:mm")</strong>
+                                </dd>
+
+                                <dt class="col-sm-5">Cliente</dt>
+                                <dd class="col-sm-7">
+                                    @if (Model.Cliente != null)
+                                    {
+                                        <span>@Model.Cliente.Nombre @Model.Cliente.Apellido</span>
+                                        <br />
+                                        <small class="text-muted">@Model.Cliente.Email</small>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-5">Empleado</dt>
+                                <dd class="col-sm-7">
+                                    @if (Model.Empleado != null)
+                                    {
+                                        <span class="badge bg-info">@Model.Empleado.Nombre @Model.Empleado.Apellido</span>
+                                        <br />
+                                        <small class="text-muted">@Model.Empleado.Cargo</small>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-5">Método de Pago</dt>
+                                <dd class="col-sm-7">
+                                    <span class="badge bg-secondary">@Model.MetodoPago</span>
+                                </dd>
+
+                                <dt class="col-sm-5">Estado</dt>
+                                <dd class="col-sm-7">
+                                    <span class="badge @(Model.Estado == "Completada" ? "bg-success" : Model.Estado == "Pendiente" ? "bg-warning text-dark" : "bg-danger")">
+                                        @Model.Estado
+                                    </span>
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5 class="text-primary"><i class="bi bi-box"></i> Productos</h5>
+                            @if (Model.DetalleVentas != null && Model.DetalleVentas.Any())
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-striped">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Cant.</th>
+                                                <th>Precio</th>
+                                                <th>Subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var detalle in Model.DetalleVentas)
+                                            {
+                                                <tr>
+                                                    <td>@detalle.Producto?.NombreProducto</td>
+                                                    <td>@detalle.Cantidad</td>
+                                                    <td>$@(detalle.PrecioUnitario?.ToString("N2") ?? "0.00")</td>
+                                                    <td>
+                                                        <strong>$@(((detalle.PrecioUnitario ?? 0) * (detalle.Cantidad ?? 0)).ToString("N2"))</strong>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="table-success">
+                                                <th colspan="3" class="text-end">TOTAL:</th>
+                                                <th><strong class="fs-5">$@(Model.Total?.ToString("N2") ?? "0.00")</strong></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning">
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                    No hay productos agregados a esta venta.
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver al Listado
+                        </a>
+                        <a asp-controller="DetalleVentas" asp-action="Create" asp-route-ventaId="@Model.VentaID" 
+                           class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> Agregar Producto
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@Model.VentaID" class="btn btn-warning">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

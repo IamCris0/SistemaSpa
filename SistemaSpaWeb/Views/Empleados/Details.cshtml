@@ -1,0 +1,160 @@
+@model SistemaSpaWeb.Models.Empleado
+
+@{
+    ViewData["Title"] = "Detalles del Empleado";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-person-badge"></i> Detalles del Empleado
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-primary"><i class="bi bi-person-circle"></i> Información Personal</h5>
+                            <dl class="row">
+                                <dt class="col-sm-5">ID Empleado</dt>
+                                <dd class="col-sm-7">@Model.EmpleadoID</dd>
+
+                                <dt class="col-sm-5">Nombre Completo</dt>
+                                <dd class="col-sm-7"><strong>@Model.Nombre @Model.Apellido</strong></dd>
+
+                                <dt class="col-sm-5">Email</dt>
+                                <dd class="col-sm-7">
+                                    <a href="mailto:@Model.Email">@Model.Email</a>
+                                </dd>
+
+                                <dt class="col-sm-5">Teléfono</dt>
+                                <dd class="col-sm-7">
+                                    @if (!string.IsNullOrEmpty(Model.Telefono))
+                                    {
+                                        <a href="tel:@Model.Telefono">@Model.Telefono</a>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">No registrado</span>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-5">Cargo</dt>
+                                <dd class="col-sm-7">
+                                    <span class="badge bg-info fs-6">@Model.Cargo</span>
+                                </dd>
+
+                                <dt class="col-sm-5">Estado</dt>
+                                <dd class="col-sm-7">
+                                    @{
+                                        var estadoBadge = Model.Estado switch
+                                        {
+                                            "Activo" => "bg-success",
+                                            "Vacaciones" => "bg-warning text-dark",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @estadoBadge">@Model.Estado</span>
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5 class="text-primary"><i class="bi bi-briefcase"></i> Información Laboral</h5>
+                            <dl class="row">
+                                <dt class="col-sm-6">Fecha de Contratación</dt>
+                                <dd class="col-sm-6">
+                                    <strong>@Model.FechaContratacion.ToString("dd/MM/yyyy")</strong>
+                                    <br />
+                                    <small class="text-muted">
+                                        Antigüedad: @((DateTime.Now - Model.FechaContratacion).Days / 365) año(s)
+                                    </small>
+                                </dd>
+
+                                <dt class="col-sm-6">Salario</dt>
+                                <dd class="col-sm-6">
+                                    <strong class="text-success fs-5">
+                                        $@(Model.Salario?.ToString("N2") ?? "0.00")
+                                    </strong>
+                                </dd>
+
+                                <dt class="col-sm-6">Citas Atendidas</dt>
+                                <dd class="col-sm-6">
+                                    <span class="badge bg-primary fs-6">
+                                        @(Model.Citas?.Count ?? 0)
+                                    </span>
+                                </dd>
+
+                                <dt class="col-sm-6">Ventas Realizadas</dt>
+                                <dd class="col-sm-6">
+                                    <span class="badge bg-success fs-6">
+                                        @(Model.Ventas?.Count ?? 0)
+                                    </span>
+                                </dd>
+
+                                <dt class="col-sm-6">Turnos Asignados</dt>
+                                <dd class="col-sm-6">
+                                    <span class="badge bg-warning text-dark fs-6">
+                                        @(Model.TurnosEmpleados?.Count ?? 0)
+                                    </span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    @if (Model.TurnosEmpleados != null && Model.TurnosEmpleados.Any())
+                    {
+                        <hr />
+                        <h5 class="text-primary"><i class="bi bi-clock"></i> Turnos del Empleado</h5>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Día</th>
+                                        <th>Hora Inicio</th>
+                                        <th>Hora Fin</th>
+                                        <th>Tipo</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var turno in Model.TurnosEmpleados)
+                                    {
+                                        <tr>
+                                            <td><strong>@turno.DiaSemana</strong></td>
+                                            <td>@turno.HoraInicio?.ToString(@"hh\:mm")</td>
+                                            <td>@turno.HoraFin?.ToString(@"hh\:mm")</td>
+                                            <td>@turno.TipoTurno</td>
+                                            <td>
+                                                <span class="badge @(turno.Estado == "Activo" ? "bg-success" : "bg-secondary")">
+                                                    @turno.Estado
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+
+                    <hr class="my-4" />
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver al Listado
+                        </a>
+                        <a asp-controller="TurnosEmpleados" asp-action="Create" asp-route-empleadoId="@Model.EmpleadoID" 
+                           class="btn btn-primary">
+                            <i class="bi bi-clock"></i> Asignar Turno
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@Model.EmpleadoID" class="btn btn-warning">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

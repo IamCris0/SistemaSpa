@@ -1,0 +1,127 @@
+@model IEnumerable<SistemaSpaWeb.Models.Cita>
+
+@{
+    ViewData["Title"] = "Citas";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">
+        <i class="bi bi-calendar-check"></i> Gestión de Citas
+    </h1>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            <i class="bi bi-check-circle"></i> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            <i class="bi bi-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Nueva Cita
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Horario</th>
+                            <th>Cliente</th>
+                            <th>Empleado</th>
+                            <th>Sala</th>
+                            <th>Servicios</th>
+                            <th>Estado</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cita in Model)
+                        {
+                            <tr>
+                                <td>@cita.CitaID</td>
+                                <td>
+                                    <strong>@cita.FechaCita.ToString("dd/MM/yyyy")</strong>
+                                </td>
+                                <td>
+                                    <i class="bi bi-clock"></i>
+                                    @cita.HoraInicio.ToString(@"hh\:mm") - @cita.HoraFin.ToString(@"hh\:mm")
+                                </td>
+                                <td>
+                                    @if (cita.Cliente != null)
+                                    {
+                                        <span>@cita.Cliente.Nombre @cita.Cliente.Apellido</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin asignar</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (cita.Empleado != null)
+                                    {
+                                        <span class="badge bg-info">@cita.Empleado.Nombre</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (cita.Sala != null)
+                                    {
+                                        <span>@cita.Sala.NombreSala</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">
+                                        @(cita.DetalleCitas?.Count ?? 0)
+                                    </span>
+                                </td>
+                                <td>
+                                    @{
+                                        var badgeClass = cita.EstadoCita switch
+                                        {
+                                            "Programada" => "bg-info",
+                                            "Confirmada" => "bg-primary",
+                                            "En Proceso" => "bg-warning text-dark",
+                                            "Completada" => "bg-success",
+                                            "Cancelada" => "bg-danger",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @badgeClass">
+                                        @cita.EstadoCita
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <a asp-action="Details" asp-route-id="@cita.CitaID"
+                                       class="btn btn-sm btn-info" title="Ver Detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@cita.CitaID"
+                                       class="btn btn-sm btn-warning" title="Editar">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@cita.CitaID"
+                                       class="btn btn-sm btn-danger" title="Eliminar">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

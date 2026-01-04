@@ -1,0 +1,109 @@
+@model SistemaSpaWeb.Models.Cliente
+
+@{
+    ViewData["Title"] = "Eliminar Cliente";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-trash"></i> Eliminar Cliente
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        <strong>¿Está seguro de que desea eliminar este cliente?</strong>
+                    </div>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">ID Cliente</dt>
+                        <dd class="col-sm-8">@Model.ClienteID</dd>
+
+                        <dt class="col-sm-4">Nombre Completo</dt>
+                        <dd class="col-sm-8"><strong>@Model.Nombre @Model.Apellido</strong></dd>
+
+                        <dt class="col-sm-4">Email</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                        <dt class="col-sm-4">Teléfono</dt>
+                        <dd class="col-sm-8">@(Model.Telefono ?? "N/A")</dd>
+
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge @(Model.Estado == "Activo" ? "bg-success" : "bg-secondary")">
+                                @Model.Estado
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-4">Registros Asociados</dt>
+                        <dd class="col-sm-8">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <i class="bi bi-calendar-check"></i> 
+                                    Citas: <strong>@(Model.Citas?.Count ?? 0)</strong>
+                                </li>
+                                <li>
+                                    <i class="bi bi-cart"></i> 
+                                    Ventas: <strong>@(Model.Ventas?.Count ?? 0)</strong>
+                                </li>
+                                <li>
+                                    <i class="bi bi-award"></i> 
+                                    Membresías: <strong>@(Model.ClientesMembresias?.Count ?? 0)</strong>
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    @{
+                        var tieneDependencias = (Model.Citas?.Count ?? 0) > 0 || 
+                                               (Model.Ventas?.Count ?? 0) > 0 || 
+                                               (Model.ClientesMembresias?.Count ?? 0) > 0;
+                    }
+
+                    @if (tieneDependencias)
+                    {
+                        <div class="alert alert-danger">
+                            <i class="bi bi-exclamation-circle"></i>
+                            <strong>Este cliente NO puede ser eliminado</strong> porque tiene registros asociados:
+                            <ul class="mb-0 mt-2">
+                                @if ((Model.Citas?.Count ?? 0) > 0)
+                                {
+                                    <li>@Model.Citas.Count cita(s) registrada(s)</li>
+                                }
+                                @if ((Model.Ventas?.Count ?? 0) > 0)
+                                {
+                                    <li>@Model.Ventas.Count venta(s) registrada(s)</li>
+                                }
+                                @if ((Model.ClientesMembresias?.Count ?? 0) > 0)
+                                {
+                                    <li>@Model.ClientesMembresias.Count membresía(s) activa(s)</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                    <hr />
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="ClienteID" />
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            @if (!tieneDependencias)
+                            {
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </button>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

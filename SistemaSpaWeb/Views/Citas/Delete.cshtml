@@ -1,0 +1,156 @@
+@model SistemaSpaWeb.Models.Cita
+
+@{
+    ViewData["Title"] = "Eliminar Cita";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-trash"></i> Eliminar Cita
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        <strong>¿Está seguro de que desea eliminar esta cita?</strong>
+                    </div>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">ID Cita</dt>
+                        <dd class="col-sm-8">@Model.CitaID</dd>
+
+                        <dt class="col-sm-4">Fecha y Hora</dt>
+                        <dd class="col-sm-8">
+                            <strong>@Model.FechaCita.ToString("dd/MM/yyyy")</strong>
+                            <br />
+                            @Model.HoraInicio.ToString(@"hh\:mm") - @Model.HoraFin.ToString(@"hh\:mm")
+                        </dd>
+
+                        <dt class="col-sm-4">Cliente</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.Cliente != null)
+                            {
+                                <strong>@Model.Cliente.Nombre @Model.Cliente.Apellido</strong>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Sin asignar</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Empleado</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.Empleado != null)
+                            {
+                                <span>@Model.Empleado.Nombre @Model.Empleado.Apellido</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Sin asignar</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Sala</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.Sala != null)
+                            {
+                                <span>@Model.Sala.NombreSala</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Sin asignar</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">
+                            @{
+                                var badgeClass = Model.EstadoCita switch
+                                {
+                                    "Programada" => "bg-info",
+                                    "Confirmada" => "bg-primary",
+                                    "En Proceso" => "bg-warning text-dark",
+                                    "Completada" => "bg-success",
+                                    "Cancelada" => "bg-danger",
+                                    _ => "bg-secondary"
+                                };
+                            }
+                            <span class="badge @badgeClass">@Model.EstadoCita</span>
+                        </dd>
+
+                        <dt class="col-sm-4">Servicios</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-primary">@(Model.DetalleCitas?.Count ?? 0)</span>
+                        </dd>
+
+                        <dt class="col-sm-4">Pagos Registrados</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-success">@(Model.PagosCitas?.Count ?? 0)</span>
+                        </dd>
+
+                        @if (!string.IsNullOrEmpty(Model.Observaciones))
+                        {
+                            <dt class="col-sm-4">Observaciones</dt>
+                            <dd class="col-sm-8">@Model.Observaciones</dd>
+                        }
+                    </dl>
+
+                    @{
+                        var tieneDependencias = (Model.DetalleCitas?.Count ?? 0) > 0 || 
+                                               (Model.PagosCitas?.Count ?? 0) > 0;
+                    }
+
+                    @if (tieneDependencias)
+                    {
+                        <div class="alert alert-danger">
+                            <i class="bi bi-exclamation-circle"></i>
+                            <strong>Esta cita NO puede ser eliminada</strong> porque tiene registros asociados:
+                            <ul class="mb-0 mt-2">
+                                @if ((Model.DetalleCitas?.Count ?? 0) > 0)
+                                {
+                                    <li>@Model.DetalleCitas.Count servicio(s) agregado(s)</li>
+                                }
+                                @if ((Model.PagosCitas?.Count ?? 0) > 0)
+                                {
+                                    <li>@Model.PagosCitas.Count pago(s) registrado(s)</li>
+                                }
+                            </ul>
+                            <hr />
+                            <p class="mb-0">
+                                <strong>Sugerencia:</strong> Primero elimine los servicios y pagos asociados, 
+                                o cambie el estado de la cita a "Cancelada" en lugar de eliminarla.
+                            </p>
+                        </div>
+                    }
+
+                    <hr />
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="CitaID" />
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            @if (!tieneDependencias)
+                            {
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i> Eliminar Cita
+                                </button>
+                            }
+                            else
+                            {
+                                <a asp-action="Edit" asp-route-id="@Model.CitaID" class="btn btn-warning">
+                                    <i class="bi bi-pencil"></i> Cambiar Estado a Cancelada
+                                </a>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,137 @@
+@model SistemaSpaWeb.Models.Cita
+
+@{
+    ViewData["Title"] = "Crear Cita";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-plus-circle"></i> Registrar Nueva Cita
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="CitaID" class="form-label"></label>
+                            <input asp-for="CitaID" class="form-control" />
+                            <span asp-validation-for="CitaID" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ClienteID" class="form-label">
+                                    <i class="bi bi-person"></i> Cliente *
+                                </label>
+                                <select asp-for="ClienteID" class="form-select" asp-items="ViewBag.ClienteID">
+                                    <option value="">-- Seleccione un cliente --</option>
+                                </select>
+                                <span asp-validation-for="ClienteID" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="EmpleadoID" class="form-label">
+                                    <i class="bi bi-person-workspace"></i> Empleado
+                                </label>
+                                <select asp-for="EmpleadoID" class="form-select" asp-items="ViewBag.EmpleadoID">
+                                    <option value="">-- Seleccione un empleado --</option>
+                                </select>
+                                <span asp-validation-for="EmpleadoID" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="SalaID" class="form-label">
+                                    <i class="bi bi-door-open"></i> Sala
+                                </label>
+                                <select asp-for="SalaID" class="form-select" asp-items="ViewBag.SalaID">
+                                    <option value="">-- Seleccione una sala --</option>
+                                </select>
+                                <span asp-validation-for="SalaID" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="FechaCita" class="form-label">
+                                    <i class="bi bi-calendar"></i> Fecha de Cita *
+                                </label>
+                                <input asp-for="FechaCita" class="form-control" type="date" />
+                                <span asp-validation-for="FechaCita" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="HoraInicio" class="form-label">
+                                    <i class="bi bi-clock"></i> Hora de Inicio *
+                                </label>
+                                <input asp-for="HoraInicio" class="form-control" type="time" />
+                                <span asp-validation-for="HoraInicio" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="HoraFin" class="form-label">
+                                    <i class="bi bi-clock-fill"></i> Hora de Fin *
+                                </label>
+                                <input asp-for="HoraFin" class="form-control" type="time" />
+                                <span asp-validation-for="HoraFin" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="EstadoCita" class="form-label">
+                                    <i class="bi bi-info-circle"></i> Estado
+                                </label>
+                                <select asp-for="EstadoCita" class="form-select">
+                                    <option value="">-- Seleccione --</option>
+                                    <option value="Programada" selected>Programada</option>
+                                    <option value="Confirmada">Confirmada</option>
+                                    <option value="En Proceso">En Proceso</option>
+                                    <option value="Completada">Completada</option>
+                                    <option value="Cancelada">Cancelada</option>
+                                </select>
+                                <span asp-validation-for="EstadoCita" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Observaciones" class="form-label">
+                                <i class="bi bi-chat-text"></i> Observaciones
+                            </label>
+                            <textarea asp-for="Observaciones" class="form-control" rows="3" 
+                                      placeholder="Notas adicionales sobre la cita..."></textarea>
+                            <span asp-validation-for="Observaciones" class="text-danger"></span>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle"></i>
+                            <strong>Nota:</strong> Después de crear la cita, podrá agregar los servicios desde la vista de detalles.
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save"></i> Guardar Cita
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Establecer fecha mínima como hoy
+        document.addEventListener('DOMContentLoaded', function() {
+            var today = new Date().toISOString().split('T')[0];
+            document.querySelector('input[type="date"]').setAttribute('min', today);
+        });
+    </script>
+}
