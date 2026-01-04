@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Spa" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=GOMEZ-JARAMILLO;Initial Catalog=Spa;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="Datos.Properties.Settings" SettingsPropertyName="SpaConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=CRIS;Initial Catalog=Spa;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="Datos.Properties.Settings" SettingsPropertyName="SpaConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CategoriasServicios" Member="CategoriasServicios">
     <Type Name="CategoriasServicios">
       <Column Name="CategoriaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -264,6 +264,13 @@
       <Column Name="MetodoPago" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Referencia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="EstadoPago" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuarios" Member="Usuarios">
+    <Type Name="Usuarios">
+      <Column Name="UsuarioID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NombreUsuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.CP_EliminarCategoriasServicios" Method="CP_EliminarCategoriasServicios">
