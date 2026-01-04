@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\views\\turnosempleados\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\views\\turnosempleados\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\views\\turnosempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\views\\turnosempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|c:\\users\\gcris\\desktop\\sistemaspa\\sistemaspaweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E1D2B1F9-1559-4E9F-9AE1-CD8FEC051DE0}|SistemaSpaWeb\\SistemaSpaWeb.csproj|solutionrelative:sistemaspaweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -82,37 +74,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\TurnosEmpleados\\Index.cshtml",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\TurnosEmpleados\\Index.cshtml",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\TurnosEmpleados\\Index.cshtml",
-              "RelativeToolTip": "SistemaSpaWeb\\Views\\TurnosEmpleados\\Index.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAADkAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-04T22:54:24.611Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\TurnosEmpleados\\Create.cshtml",
-              "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\TurnosEmpleados\\Create.cshtml",
-              "ToolTip": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\TurnosEmpleados\\Create.cshtml",
-              "RelativeToolTip": "SistemaSpaWeb\\Views\\TurnosEmpleados\\Create.cshtml",
-              "ViewState": "AgIAACYAAAAAAAAAAAAuwDIAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-04T22:54:16.011Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "HistorialClientesController.cs",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\HistorialClientesController.cs",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Controllers\\HistorialClientesController.cs",
@@ -125,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\GastosOperativos\\Details.cshtml",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\GastosOperativos\\Details.cshtml",
@@ -138,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\GastosOperativos\\Edit.cshtml",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\GastosOperativos\\Edit.cshtml",
@@ -151,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\GastosOperativos\\Create.cshtml",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\GastosOperativos\\Create.cshtml",
@@ -164,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\GastosOperativos\\Delete.cshtml",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\GastosOperativos\\Delete.cshtml",
@@ -177,7 +143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Ventas\\Index.cshtml",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\Ventas\\Index.cshtml",
@@ -190,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Clientes\\Index.cshtml",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\Clientes\\Index.cshtml",
@@ -203,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Views\\Shared\\_Layout.cshtml",
@@ -216,7 +182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "GastosOperativosController.cs",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\GastosOperativosController.cs",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Controllers\\GastosOperativosController.cs",
@@ -229,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 9,
               "Title": "ServiciosController.cs",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\ServiciosController.cs",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Controllers\\ServiciosController.cs",
@@ -241,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\appsettings.json",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\appsettings.json",
@@ -253,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Program.cs",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Program.cs",
@@ -265,7 +231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 14,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\ApplicationDbContext.cs",
@@ -277,7 +243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 13,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Controllers\\HomeController.cs",
@@ -289,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 15,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Models\\Usuario.cs",
@@ -301,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 12,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\gcris\\Desktop\\SistemaSpa\\SistemaSpaWeb\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "SistemaSpaWeb\\Controllers\\AccountController.cs",
