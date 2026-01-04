@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36401.2 d17.14
+VisualStudioVersion = 17.14.36401.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{60D927F0-2D24-45F5-A61B-9BA07F38A188}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{19A0D6D4-68C5-4DC9-867A-D457AF32C23E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "Presentacion\Presentacion.csproj", "{213EBA9E-6740-41FF-807E-191713C88811}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaWebSpa", "SistemaWebSpa\SistemaWebSpa.csproj", "{0A277E8D-BD7B-474B-BDB9-725346D014E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{213EBA9E-6740-41FF-807E-191713C88811}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{213EBA9E-6740-41FF-807E-191713C88811}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{213EBA9E-6740-41FF-807E-191713C88811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A277E8D-BD7B-474B-BDB9-725346D014E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A277E8D-BD7B-474B-BDB9-725346D014E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A277E8D-BD7B-474B-BDB9-725346D014E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A277E8D-BD7B-474B-BDB9-725346D014E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
