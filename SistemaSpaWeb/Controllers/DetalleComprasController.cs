@@ -59,10 +59,10 @@ namespace SistemaSpaWeb.Controllers
                 // Si no se especificó precio, usar el precio del producto
                 if (!detalle.PrecioUnitario.HasValue || detalle.PrecioUnitario == 0)
                 {
-                    var producto = await _context.Productos.FindAsync(detalle.ProductoID);
-                    if (producto != null)
+                    var producto1 = await _context.Productos.FindAsync(detalle.ProductoID);
+                    if (producto1 != null)
                     {
-                        detalle.PrecioUnitario = producto.PrecioUnitario;
+                        detalle.PrecioUnitario = producto1.PrecioUnitario;
                     }
                 }
 

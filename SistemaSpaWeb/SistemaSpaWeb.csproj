@@ -21,7 +21,6 @@
   <ItemGroup>
     <Folder Include="Views\Citas\" />
     <Folder Include="Views\Servicios\" />
-    <Folder Include="Views\TurnosEmpleados\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,80 @@
+@model SistemaSpaWeb.Models.CategoriasServicios
+
+@{
+    ViewData["Title"] = "Eliminar Categoría de Servicio";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-trash"></i> Eliminar Categoría de Servicio
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        <strong>¿Está seguro de que desea eliminar esta categoría?</strong>
+                    </div>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">ID Categoría</dt>
+                        <dd class="col-sm-8">@Model.CategoriaID</dd>
+
+                        <dt class="col-sm-4">Nombre</dt>
+                        <dd class="col-sm-8">@Model.NombreCategoria</dd>
+
+                        @if (!string.IsNullOrEmpty(Model.Descripcion))
+                        {
+                            <dt class="col-sm-4">Descripción</dt>
+                            <dd class="col-sm-8">@Model.Descripcion</dd>
+                        }
+
+                        <dt class="col-sm-4">Servicios Asociados</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-primary">@(Model.Servicios?.Count ?? 0)</span>
+                        </dd>
+                    </dl>
+
+                    @{
+                        var tieneServicios = (Model.Servicios?.Count ?? 0) > 0;
+                    }
+
+                    @if (tieneServicios)
+                    {
+                        <div class="alert alert-danger">
+                            <i class="bi bi-exclamation-circle"></i>
+                            <strong>Esta categoría NO puede ser eliminada</strong> porque tiene servicios asociados.
+                            <ul class="mb-0 mt-2">
+                                <li>@Model.Servicios.Count servicio(s) asociado(s)</li>
+                            </ul>
+                            <hr />
+                            <p class="mb-0">
+                                <strong>Sugerencia:</strong> Primero elimine o reasigne los servicios asociados a otra categoría.
+                            </p>
+                        </div>
+                    }
+
+                    <hr />
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="CategoriaID" />
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            @if (!tieneServicios)
+                            {
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i> Eliminar Categoría
+                                </button>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

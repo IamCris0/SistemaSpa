@@ -1,0 +1,94 @@
+@model SistemaSpaWeb.Models.CategoriasServicios
+
+@{
+    ViewData["Title"] = "Detalles de Categoría";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-info-circle"></i> Detalles de la Categoría
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID Categoría</dt>
+                        <dd class="col-sm-8">@Model.CategoriaID</dd>
+
+                        <dt class="col-sm-4">Nombre</dt>
+                        <dd class="col-sm-8"><strong>@Model.NombreCategoria</strong></dd>
+
+                        <dt class="col-sm-4">Descripción</dt>
+                        <dd class="col-sm-8">@(Model.Descripcion ?? "Sin descripción")</dd>
+
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge @(Model.Estado == "Activo" ? "bg-success" : "bg-secondary") fs-6">
+                                @Model.Estado
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-4">Servicios Asociados</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-primary fs-6">
+                                @(Model.Servicios?.Count ?? 0) servicio(s)
+                            </span>
+                        </dd>
+                    </dl>
+
+                    @if (Model.Servicios != null && Model.Servicios.Any())
+                    {
+                        <hr />
+                        <h5 class="text-primary">
+                            <i class="bi bi-flower1"></i> Servicios en esta Categoría
+                        </h5>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-striped">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Servicio</th>
+                                        <th>Duración</th>
+                                        <th>Precio</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var servicio in Model.Servicios)
+                                    {
+                                        <tr>
+                                            <td><strong>@servicio.NombreServicio</strong></td>
+                                            <td>@servicio.Duracion min</td>
+                                            <td><strong>$@servicio.Precio.ToString("N2")</strong></td>
+                                            <td>
+                                                <span class="badge @(servicio.Estado == "Activo" ? "bg-success" : "bg-secondary")">
+                                                    @servicio.Estado
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+
+                    <hr class="my-4" />
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver al Listado
+                        </a>
+                        <a asp-controller="Servicios" asp-action="Create" class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> Agregar Servicio
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@Model.CategoriaID" class="btn btn-warning">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
