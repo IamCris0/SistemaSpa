@@ -5,52 +5,59 @@
 }
 
 <div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-warning text-dark">
-                    <h2 class="mb-0">
-                        <i class="bi bi-pencil"></i> Editar Proveedor
-                    </h2>
+    <div class="card shadow">
+        <div class="card-header bg-warning">
+            <h5 class="mb-0">Editar Proveedor</h5>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Edit">
+                <input type="hidden" asp-for="ProveedorID" />
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label asp-for="NombreProveedor" class="form-label"></label>
+                        <input asp-for="NombreProveedor" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Contacto" class="form-label"></label>
+                        <input asp-for="Contacto" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="Telefono" class="form-label"></label>
+                        <input asp-for="Telefono" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="Estado" class="form-label"></label>
+                        <select asp-for="Estado" class="form-select">
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label asp-for="Direccion" class="form-label"></label>
+                        <textarea asp-for="Direccion" class="form-control" rows="2"></textarea>
+                    </div>
+
                 </div>
-                <div class="card-body">
-                    <form asp-action="Edit" method="post">
-                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
-                        <input type="hidden" asp-for="ProveedorID" />
 
-                        <div class="mb-3">
-                            <label asp-for="NombreProveedor" class="form-label"></label>
-                            <input asp-for="NombreProveedor" class="form-control" />
-                            <span asp-validation-for="NombreProveedor" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Estado" class="form-label">Estado</label>
-                            <select asp-for="Estado" class="form-select">
-                                <option value="">-- Seleccione --</option>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
-                            </select>
-                            <span asp-validation-for="Estado" class="text-danger"></span>
-                        </div>
-
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a asp-action="Index" class="btn btn-secondary">
-                                <i class="bi bi-arrow-left"></i> Cancelar
-                            </a>
-                            <button type="submit" class="btn btn-warning">
-                                <i class="bi bi-save"></i> Actualizar
-                            </button>
-                        </div>
-                    </form>
+                <div class="mt-4 text-end">
+                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-pencil-square"></i> Actualizar
+                    </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

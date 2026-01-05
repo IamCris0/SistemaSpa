@@ -1,45 +1,40 @@
-﻿@model SistemaSpaWeb.Models.PagoCita
+@model SistemaSpaWeb.Models.PagoCita
 
 @{
-    ViewData["Title"] = "Detalles de Pago de Cita";
+    ViewData["Title"] = "Detalle del Pago";
 }
 
 <div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-info text-white">
-                    <h2 class="mb-0">
-                        <i class="bi bi-info-circle"></i> Detalles de Pago de Cita
-                    </h2>
-                </div>
-                <div class="card-body">
-                    <dl class="row">
-                        <dt class="col-sm-4">ID</dt>
-                        <dd class="col-sm-8">@Model.PagoID</dd>
+    <div class="card shadow">
+        <div class="card-header bg-info text-white">
+            <h4>Detalle del Pago</h4>
+        </div>
 
-                        <dt class="col-sm-4">InformaciÃ³n</dt>
-                        <dd class="col-sm-8"><strong>@Model.PagoID</strong></dd>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Cliente</dt>
+                <dd class="col-sm-8">@Model.Cita?.Cliente?.Nombre</dd>
 
-                        <dt class="col-sm-4">Estado</dt>
-                         <dd class="col-sm-8">
-                            <span class="badge @(Model.EstadoPago == "Pa" ? "bg-success" : "bg-secondary") fs-6">
-                                @Model.EstadoPago
-                            </span>
-                        </dd>
-                    </dl>
+                <dt class="col-sm-4">Fecha de Pago</dt>
+                <dd class="col-sm-8">@Model.FechaPago?.ToString("dd/MM/yyyy")</dd>
 
-                    <hr class="my-4" />
+                <dt class="col-sm-4">Monto</dt>
+                <dd class="col-sm-8">$@Model.Monto</dd>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a asp-action="Index" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left"></i> Volver al Listado
-                        </a>
-                        <a asp-action="Edit" asp-route-id="@Model.PagoID" class="btn btn-warning">
-                            <i class="bi bi-pencil"></i> Editar
-                        </a>
-                    </div>
-                </div>
+                <dt class="col-sm-4">Método</dt>
+                <dd class="col-sm-8">@Model.MetodoPago</dd>
+
+                <dt class="col-sm-4">Referencia</dt>
+                <dd class="col-sm-8">@Model.Referencia</dd>
+
+                <dt class="col-sm-4">Estado</dt>
+                <dd class="col-sm-8">@Model.EstadoPago</dd>
+            </dl>
+
+            <div class="text-end">
+                <a asp-controller="Citas" asp-action="Details" asp-route-id="@Model.CitaID" class="btn btn-secondary">
+                    Volver
+                </a>
             </div>
         </div>
     </div>

@@ -1,60 +1,82 @@
-﻿@model SistemaSpaWeb.Models.HistorialCliente
+@model SistemaSpaWeb.Models.HistorialCliente
 
 @{
-    ViewData["Title"] = "Crear Historial";
+    ViewData["Title"] = "Nuevo Historial";
 }
 
 <div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h2 class="mb-0">
-                        <i class="bi bi-plus-circle"></i> Registrar Nuevo/a Historial
-                    </h2>
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">
+                <i class="bi bi-plus-circle"></i> Registrar Historial
+            </h5>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Create">
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label asp-for="ClienteID" class="form-label"></label>
+                        <select asp-for="ClienteID" class="form-select" asp-items="ViewBag.ClienteID">
+                            <option value="">-- Seleccione Cliente --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="CitaID" class="form-label"></label>
+                        <select asp-for="CitaID" class="form-select" asp-items="ViewBag.CitaID">
+                            <option value="">-- Seleccione Cita --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="FechaVisita" class="form-label"></label>
+                        <input asp-for="FechaVisita" type="date" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="Calificacion" class="form-label"></label>
+                        <select asp-for="Calificacion" class="form-select">
+                            <option value="">--</option>
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <option value="@i">@i ⭐</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="FechaRegistro" class="form-label"></label>
+                        <input asp-for="FechaRegistro" type="date" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12">
+                        <label asp-for="AlergiasProcedimiento" class="form-label"></label>
+                        <textarea asp-for="AlergiasProcedimiento" class="form-control" rows="2"></textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label asp-for="ResultadosTratamiento" class="form-label"></label>
+                        <textarea asp-for="ResultadosTratamiento" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label asp-for="Observaciones" class="form-label"></label>
+                        <textarea asp-for="Observaciones" class="form-control" rows="3"></textarea>
+                    </div>
+
                 </div>
-                <div class="card-body">
-                    <form asp-action="Create" method="post">
-                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
-                        <div class="mb-3">
-                            <label asp-for="HistorialID" class="form-label"></label>
-                            <input asp-for="HistorialID" class="form-control" />
-                            <span asp-validation-for="HistorialID" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">InformaciÃ³n Principal</label>
-                            <input class="form-control" placeholder="Ingrese la informaciÃ³n" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Estado" class="form-label">Estado</label>
-                            <select asp-for="Estado" class="form-select">
-                                <option value="">-- Seleccione --</option>
-                                <option value="Activo" selected>Activo</option>
-                                <option value="Inactivo">Inactivo</option>
-                            </select>
-                            <span asp-validation-for="Estado" class="text-danger"></span>
-                        </div>
-
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a asp-action="Index" class="btn btn-secondary">
-                                <i class="bi bi-arrow-left"></i> Cancelar
-                            </a>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-save"></i> Guardar
-                            </button>
-                        </div>
-                    </form>
+                <div class="mt-4 text-end">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        Volver
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-save"></i> Guardar
+                    </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

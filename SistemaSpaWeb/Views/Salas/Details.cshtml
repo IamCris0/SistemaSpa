@@ -1,43 +1,39 @@
 ﻿@model SistemaSpaWeb.Models.Sala
 
-@{
-    ViewData["Title"] = "Detalles de Sala";
-}
-
 <div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-info text-white">
-                    <h2 class="mb-0">
-                        <i class="bi bi-info-circle"></i> Detalles de Sala
-                    </h2>
-                </div>
-                <div class="card-body">
-                    <dl class="row">
-                        <dt class="col-sm-4">ID</dt>
-                        <dd class="col-sm-8">@Model.SalaID</dd>
+    <div class="card shadow">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0">
+                <i class="bi bi-eye"></i> Detalle de Sala
+            </h5>
+        </div>
 
-                        <dt class="col-sm-4">InformaciÃ³n</dt>
-                        <dd class="col-sm-8"><strong>@Model.NombreSala</strong></dd>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Nombre</dt>
+                <dd class="col-sm-8">@Model.NombreSala</dd>
 
-                        <dt class="col-sm-4">Estado</dt>
-                        <dd class="col-sm-8">
-                            <span class="badge bg-success">@Model.Estado</span>
-                        </dd>
-                    </dl>
+                <dt class="col-sm-4">Tipo</dt>
+                <dd class="col-sm-8">@Model.TipoSala</dd>
 
-                    <hr class="my-4" />
+                <dt class="col-sm-4">Capacidad</dt>
+                <dd class="col-sm-8">@Model.Capacidad</dd>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a asp-action="Index" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left"></i> Volver al Listado
-                        </a>
-                        <a asp-action="Edit" asp-route-id="@Model.SalaID" class="btn btn-warning">
-                            <i class="bi bi-pencil"></i> Editar
-                        </a>
-                    </div>
-                </div>
+                <dt class="col-sm-4">Estado</dt>
+                <dd class="col-sm-8">
+                    <span class="badge @(Model.Estado == "Disponible" ? "bg-success" : "bg-secondary")">
+                        @Model.Estado
+                    </span>
+                </dd>
+            </dl>
+
+            <div class="text-end">
+                <a asp-action="Edit" asp-route-id="@Model.SalaID" class="btn btn-warning">
+                    Editar
+                </a>
+                <a asp-action="Index" class="btn btn-secondary">
+                    Volver
+                </a>
             </div>
         </div>
     </div>

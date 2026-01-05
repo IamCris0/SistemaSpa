@@ -1,76 +1,58 @@
-﻿@model IEnumerable<SistemaSpaWeb.Models.HistorialCliente>
+@model IEnumerable<SistemaSpaWeb.Models.HistorialCliente>
 
 @{
     ViewData["Title"] = "Historial de Clientes";
 }
 
 <div class="container mt-4">
-    <h1 class="mb-4">
-        <i class="bi bi-clock-history"></i> GestiÃ³n de Historial de Clientes
-    </h1>
-
-    @if (TempData["Success"] != null)
-    {
-        <div class="alert alert-success alert-dismissible fade show">
-            <i class="bi bi-check-circle"></i> @TempData["Success"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="bi bi-journal-medical"></i> Historial de Clientes
+            </h5>
+            <a asp-action="Create" class="btn btn-light btn-sm">
+                <i class="bi bi-plus-circle"></i> Nuevo Historial
+            </a>
         </div>
-    }
 
-    @if (TempData["Error"] != null)
-    {
-        <div class="alert alert-danger alert-dismissible fade show">
-            <i class="bi bi-exclamation-triangle"></i> @TempData["Error"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    }
-
-    <div class="mb-3">
-        <a asp-action="Create" class="btn btn-primary">
-            <i class="bi bi-plus-circle"></i> Nuevo/a Historial
-        </a>
-    </div>
-
-    <div class="card shadow-sm">
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead class="table-dark">
+            <table class="table table-hover table-bordered align-middle">
+                <thead class="table-light text-center">
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Fecha Visita</th>
+                        <th>Calificación</th>
+                        <th>Fecha Registro</th>
+                        <th style="width:180px;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
                         <tr>
-                            <th>ID</th>
-                            <th>InformaciÃ³n</th>
-                            <th>Estado</th>
-                            <th class="text-center">Acciones</th>
+                            <td>@item.Cliente?.Nombre @item.Cliente?.Apellido</td>
+                            <td class="text-center">@item.FechaVisita?.ToString("dd/MM/yyyy")</td>
+                            <td class="text-center">
+                                <span class="badge bg-warning text-dark">
+                                    ⭐ @item.Calificacion / 5
+                                </span>
+                            </td>
+                            <td class="text-center">@item.FechaRegistro?.ToString("dd/MM/yyyy")</td>
+                            <td class="text-center">
+                                <a asp-action="Details" asp-route-id="@item.HistorialID" class="btn btn-info btn-sm">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@item.HistorialID" class="btn btn-warning btn-sm">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.HistorialID" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.HistorialID</td>
-                                <td>@item.HistorialID</td>
-                                <td>
-                                    <span class="badge bg-success">Activo</span>
-                                </td>
-                                <td class="text-center">
-                                    <a asp-action="Details" asp-route-id="@item.HistorialID"
-                                       class="btn btn-sm btn-info" title="Ver Detalles">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
-                                    <a asp-action="Edit" asp-route-id="@item.HistorialID"
-                                       class="btn btn-sm btn-warning" title="Editar">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <a asp-action="Delete" asp-route-id="@item.HistorialID"
-                                       class="btn btn-sm btn-danger" title="Eliminar">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

@@ -1,31 +1,145 @@
-﻿@model SistemaSpaWeb.Models.ClienteMembresia
+@model SistemaSpaWeb.Models.ClienteMembresia
 
 @{
-    ViewData["Title"] = "Detalles de Cliente MembresÃ­a";
+    ViewData["Title"] = "Detalles de la Membresía";
 }
 
 <div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card shadow">
                 <div class="card-header bg-info text-white">
                     <h2 class="mb-0">
-                        <i class="bi bi-info-circle"></i> Detalles de Cliente MembresÃ­a
+                        <i class="bi bi-card-checklist"></i>
+                        Detalles de la Membresía #@Model.ClienteMembresiaID
                     </h2>
                 </div>
+
                 <div class="card-body">
-                    <dl class="row">
-                        <dt class="col-sm-4">ID</dt>
-                        <dd class="col-sm-8">@Model.ClienteMembresiaID</dd>
+                    <div class="row">
+                        <!-- Columna Izquierda -->
+                        <div class="col-md-6">
+                            <h5 class="text-primary border-bottom pb-2">
+                                <i class="bi bi-person"></i> Información del Cliente
+                            </h5>
 
-                        <dt class="col-sm-4">InformaciÃ³n</dt>
-                        <dd class="col-sm-8"><strong>@Model.ClienteMembresiaID</strong></dd>
+                            <dl class="row">
+                                <dt class="col-sm-4">Cliente</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.Cliente != null)
+                                    {
+                                        <strong>@Model.Cliente.Nombre @Model.Cliente.Apellido</strong>
+                                        <br />
+                                        <small class="text-muted">
+                                            <i class="bi bi-envelope"></i> @Model.Cliente.Email
+                                            @if (!string.IsNullOrEmpty(Model.Cliente.Telefono))
+                                            {
+                                                <br />
+                                                <i class="bi bi-telephone"></i> @Model.Cliente.Telefono
+                                            }
+                                        </small>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin cliente asignado</span>
+                                    }
+                                </dd>
 
-                        <dt class="col-sm-4">Estado</dt>
-                        <dd class="col-sm-8">
-                            <span class="badge bg-success">@Model.Estado</span>
-                        </dd>
-                    </dl>
+                                <dt class="col-sm-4">Membresía</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.Membresia != null)
+                                    {
+                                        <span class="badge bg-info fs-6">
+                                            @Model.Membresia.NombreMembresia
+                                        </span>
+                                        <br />
+                                        <small class="text-muted">
+                                            @Model.Membresia.Descripcion
+                                        </small>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin membresía</span>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-4">Estado</dt>
+                                <dd class="col-sm-8">
+                                    @{
+                                        var badgeClass = Model.EstadoMembresia switch
+                                        {
+                                            "Activa" => "bg-success",
+                                            "Suspendida" => "bg-warning text-dark",
+                                            "Vencida" => "bg-danger",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @badgeClass fs-6">
+                                        @Model.EstadoMembresia
+                                    </span>
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <!-- Columna Derecha -->
+                        <div class="col-md-6">
+                            <h5 class="text-primary border-bottom pb-2">
+                                <i class="bi bi-calendar-event"></i> Vigencia de la Membresía
+                            </h5>
+
+                            <dl class="row">
+                                <dt class="col-sm-4">Fecha Inicio</dt>
+                                <dd class="col-sm-8">
+                                    @(Model.FechaInicio.HasValue
+                                        ? Model.FechaInicio.Value.ToString("dddd, dd MMMM yyyy")
+                                        : "—")
+                                </dd>
+
+                                <dt class="col-sm-4">Fecha Fin</dt>
+                                <dd class="col-sm-8">
+                                    @(Model.FechaFin.HasValue
+                                        ? Model.FechaFin.Value.ToString("dddd, dd MMMM yyyy")
+                                        : "—")
+                                </dd>
+
+                                <dt class="col-sm-4">Duración</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.FechaInicio.HasValue && Model.FechaFin.HasValue)
+                                    {
+                                        var dias = (Model.FechaFin.Value - Model.FechaInicio.Value).Days;
+                                        <span>@dias día(s)</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">No definida</span>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-4">Fecha Registro</dt>
+                                <dd class="col-sm-8">
+                                    @(Model.FechaRegistro.HasValue
+                                        ? Model.FechaRegistro.Value.ToString("dd/MM/yyyy HH:mm")
+                                        : "—")
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <!-- Alertas de Estado -->
+                    @if (Model.EstadoMembresia == "Vencida")
+                    {
+                        <div class="alert alert-danger mt-3">
+                            <i class="bi bi-exclamation-circle"></i>
+                            Esta membresía se encuentra <strong>vencida</strong>.
+                        </div>
+                    }
+                    else if (Model.EstadoMembresia == "Suspendida")
+                    {
+                        <div class="alert alert-warning mt-3">
+                            <i class="bi bi-pause-circle"></i>
+                            Esta membresía está <strong>suspendida</strong>.
+                        </div>
+                    }
 
                     <hr class="my-4" />
 
@@ -33,8 +147,15 @@
                         <a asp-action="Index" class="btn btn-secondary">
                             <i class="bi bi-arrow-left"></i> Volver al Listado
                         </a>
-                        <a asp-action="Edit" asp-route-id="@Model.ClienteMembresiaID" class="btn btn-warning">
+                        <a asp-action="Edit"
+                           asp-route-id="@Model.ClienteMembresiaID"
+                           class="btn btn-warning">
                             <i class="bi bi-pencil"></i> Editar
+                        </a>
+                        <a asp-action="Delete"
+                           asp-route-id="@Model.ClienteMembresiaID"
+                           class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Eliminar
                         </a>
                     </div>
                 </div>

@@ -1,44 +1,42 @@
-﻿@model SistemaSpaWeb.Models.DetalleCita
+@model SistemaSpaWeb.Models.DetalleCita
 
 @{
-    ViewData["Title"] = "Detalles de Detalle de Cita";
+    ViewData["Title"] = "Detalle del Servicio";
+    var total = Model.PrecioServicio - (Model.PrecioServicio * (Model.Descuento ?? 0) / 100);
 }
 
 <div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-info text-white">
-                    <h2 class="mb-0">
-                        <i class="bi bi-info-circle"></i> Detalles de Detalle de Cita
-                    </h2>
-                </div>
-                <div class="card-body">
-                    <dl class="row">
-                        <dt class="col-sm-4">ID</dt>
-                        <dd class="col-sm-8">@Model.DetalleCitaID</dd>
+    <div class="card shadow">
+        <div class="card-header bg-info text-white">
+            <h2><i class="bi bi-eye"></i> Detalle del Servicio</h2>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Cita</dt>
+                <dd class="col-sm-8">@Model.Cita?.CitaID</dd>
 
-                        <dt class="col-sm-4">InformaciÃ³n</dt>
-                        <dd class="col-sm-8"><strong>@Model.DetalleCitaID</strong></dd>
+                <dt class="col-sm-4">Servicio</dt>
+                <dd class="col-sm-8">@Model.Servicio?.NombreServicio</dd>
 
-                        <dt class="col-sm-4">Estado</dt>
-                        <dd class="col-sm-8">
-                            <span class="badge bg-success">@Model.Estado</span>
-                        </dd>
-                    </dl>
+                <dt class="col-sm-4">Precio</dt>
+                <dd class="col-sm-8">$ @Model.PrecioServicio</dd>
 
-                    <hr class="my-4" />
+                <dt class="col-sm-4">Descuento</dt>
+                <dd class="col-sm-8">@Model.Descuento %</dd>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a asp-action="Index" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left"></i> Volver al Listado
-                        </a>
-                        <a asp-action="Edit" asp-route-id="@Model.DetalleCitaID" class="btn btn-warning">
-                            <i class="bi bi-pencil"></i> Editar
-                        </a>
-                    </div>
-                </div>
-            </div>
+                <dt class="col-sm-4">Total</dt>
+                <dd class="col-sm-8">
+                    <strong>$ @total</strong>
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="Edit" asp-route-id="@Model.DetalleCitaID" class="btn btn-warning">
+                <i class="bi bi-pencil"></i> Editar
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver
+            </a>
         </div>
     </div>
 </div>

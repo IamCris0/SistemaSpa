@@ -1,4 +1,4 @@
-ï»¿@model SistemaSpaWeb.Models.DetalleCompra
+@model SistemaSpaWeb.Models.DetalleCompra
 
 @{
     ViewData["Title"] = "Editar Detalle de Compra";
@@ -15,32 +15,35 @@
                 </div>
                 <div class="card-body">
                     <form asp-action="Edit" method="post">
-                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
                         <input type="hidden" asp-for="DetalleCompraID" />
 
                         <div class="mb-3">
-                            <label asp-for="DetalleCompraID" class="form-label"></label>
-                            <input asp-for="DetalleCompraID" class="form-control" />
-                            <span asp-validation-for="DetalleCompraID" class="text-danger"></span>
+                            <label asp-for="CompraID" class="form-label"></label>
+                            <select asp-for="CompraID" class="form-select" asp-items="ViewBag.CompraID"></select>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Estado" class="form-label">Estado</label>
-                            <select asp-for="Estado" class="form-select">
-                                <option value="">-- Seleccione --</option>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
-                            </select>
-                            <span asp-validation-for="Estado" class="text-danger"></span>
+                            <label asp-for="ProductoID" class="form-label"></label>
+                            <select asp-for="ProductoID" class="form-select" asp-items="ViewBag.ProductoID"></select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Cantidad" class="form-label"></label>
+                            <input asp-for="Cantidad" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PrecioUnitario" class="form-label"></label>
+                            <input asp-for="PrecioUnitario" class="form-control" />
+                        </div>
+
+                        <div class="alert alert-secondary">
+                            Subtotal calculado automáticamente.
                         </div>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a asp-action="Index" class="btn btn-secondary">
-                                <i class="bi bi-arrow-left"></i> Cancelar
-                            </a>
-                            <button type="submit" class="btn btn-warning">
-                                <i class="bi bi-save"></i> Actualizar
-                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-warning">Actualizar</button>
                         </div>
                     </form>
                 </div>
@@ -48,9 +51,3 @@
         </div>
     </div>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

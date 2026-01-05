@@ -1,43 +1,37 @@
-﻿@model SistemaSpaWeb.Models.Membresia
-
-@{
-    ViewData["Title"] = "Detalles de MembresÃ­a";
-}
+@model SistemaSpaWeb.Models.Membresia
 
 <div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-info text-white">
-                    <h2 class="mb-0">
-                        <i class="bi bi-info-circle"></i> Detalles de MembresÃ­a
-                    </h2>
-                </div>
-                <div class="card-body">
-                    <dl class="row">
-                        <dt class="col-sm-4">ID</dt>
-                        <dd class="col-sm-8">@Model.MembresiaID</dd>
+    <div class="card shadow">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0">
+                <i class="bi bi-eye"></i> Detalle de la Membresía
+            </h5>
+        </div>
 
-                        <dt class="col-sm-4">InformaciÃ³n</dt>
-                        <dd class="col-sm-8"><strong>@Model.NombreMembresia</strong></dd>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Nombre</dt>
+                <dd class="col-sm-8">@Model.NombreMembresia</dd>
 
-                        <dt class="col-sm-4">Estado</dt>
-                        <dd class="col-sm-8">
-                            <span class="badge bg-success">@Model.Estado</span>
-                        </dd>
-                    </dl>
+                <dt class="col-sm-4">Duración</dt>
+                <dd class="col-sm-8">@Model.DuracionMeses meses</dd>
 
-                    <hr class="my-4" />
+                <dt class="col-sm-4">Precio</dt>
+                <dd class="col-sm-8">$@Model.Precio?.ToString("N2")</dd>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a asp-action="Index" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left"></i> Volver al Listado
-                        </a>
-                        <a asp-action="Edit" asp-route-id="@Model.MembresiaID" class="btn btn-warning">
-                            <i class="bi bi-pencil"></i> Editar
-                        </a>
-                    </div>
-                </div>
+                <dt class="col-sm-4">Descuento</dt>
+                <dd class="col-sm-8">@Model.Descuento %</dd>
+
+                <dt class="col-sm-4">Estado</dt>
+                <dd class="col-sm-8">@Model.Estado</dd>
+
+                <dt class="col-sm-4">Descripción</dt>
+                <dd class="col-sm-8">@Model.Descripcion</dd>
+            </dl>
+
+            <div class="text-end">
+                <a asp-action="Edit" asp-route-id="@Model.MembresiaID" class="btn btn-warning">Editar</a>
+                <a asp-action="Index" class="btn btn-secondary">Volver</a>
             </div>
         </div>
     </div>

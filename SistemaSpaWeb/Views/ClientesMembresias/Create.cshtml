@@ -1,7 +1,7 @@
-﻿@model SistemaSpaWeb.Models.ClienteMembresia
+@model SistemaSpaWeb.Models.ClienteMembresia
 
 @{
-    ViewData["Title"] = "Crear Cliente MembresÃ­a";
+    ViewData["Title"] = "Asignar Membresía";
 }
 
 <div class="container mt-4">
@@ -10,32 +10,81 @@
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
                     <h2 class="mb-0">
-                        <i class="bi bi-plus-circle"></i> Registrar Nuevo/a Cliente MembresÃ­a
+                        <i class="bi bi-plus-circle"></i> Asignar Membresía a Cliente
                     </h2>
                 </div>
+
                 <div class="card-body">
                     <form asp-action="Create" method="post">
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
+                        <!-- Cliente -->
                         <div class="mb-3">
-                            <label asp-for="ClienteMembresiaID" class="form-label"></label>
-                            <input asp-for="ClienteMembresiaID" class="form-control" />
-                            <span asp-validation-for="ClienteMembresiaID" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">InformaciÃ³n Principal</label>
-                            <input class="form-control" placeholder="Ingrese la informaciÃ³n" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Estado" class="form-label">Estado</label>
-                            <select asp-for="Estado" class="form-select">
-                                <option value="">-- Seleccione --</option>
-                                <option value="Activo" selected>Activo</option>
-                                <option value="Inactivo">Inactivo</option>
+                            <label asp-for="ClienteID" class="form-label">
+                                <i class="bi bi-person"></i> Cliente *
+                            </label>
+                            <select asp-for="ClienteID" class="form-select" asp-items="ViewBag.ClienteID">
+                                <option value="">-- Seleccione un cliente --</option>
                             </select>
-                            <span asp-validation-for="Estado" class="text-danger"></span>
+                            <span asp-validation-for="ClienteID" class="text-danger"></span>
+                        </div>
+
+                        <!-- Membresía -->
+                        <div class="mb-3">
+                            <label asp-for="MembresiaID" class="form-label">
+                                <i class="bi bi-card-heading"></i> Membresía *
+                            </label>
+                            <select asp-for="MembresiaID" class="form-select" asp-items="ViewBag.MembresiaID">
+                                <option value="">-- Seleccione una membresía --</option>
+                            </select>
+                            <span asp-validation-for="MembresiaID" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <!-- Fecha Inicio -->
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="FechaInicio" class="form-label">
+                                    <i class="bi bi-calendar"></i> Fecha de Inicio *
+                                </label>
+                                <input asp-for="FechaInicio" type="date" class="form-control" />
+                                <span asp-validation-for="FechaInicio" class="text-danger"></span>
+                            </div>
+
+                            <!-- Fecha Fin -->
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="FechaFin" class="form-label">
+                                    <i class="bi bi-calendar-check"></i> Fecha de Fin
+                                </label>
+                                <input asp-for="FechaFin" type="date" class="form-control" />
+                                <span asp-validation-for="FechaFin" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Estado -->
+                        <div class="mb-3">
+                            <label asp-for="EstadoMembresia" class="form-label">
+                                <i class="bi bi-info-circle"></i> Estado de la Membresía
+                            </label>
+                            <select asp-for="EstadoMembresia" class="form-select">
+                                <option value="">-- Seleccione --</option>
+                                <option value="Activa" selected>Activa</option>
+                                <option value="Suspendida">Suspendida</option>
+                                <option value="Vencida">Vencida</option>
+                            </select>
+                            <span asp-validation-for="EstadoMembresia" class="text-danger"></span>
+                        </div>
+
+                        <!-- Fecha Registro -->
+                        <div class="mb-3">
+                            <label asp-for="FechaRegistro" class="form-label">
+                                <i class="bi bi-clock-history"></i> Fecha de Registro
+                            </label>
+                            <input asp-for="FechaRegistro" type="date" class="form-control" readonly />
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle"></i>
+                            <strong>Nota:</strong> La membresía se activará según las fechas configuradas.
                         </div>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -57,4 +106,22 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const today = new Date().toISOString().split('T')[0];
+
+            // Fecha mínima hoy
+            document.querySelectorAll('input[type="date"]').forEach(input => {
+                if (!input.hasAttribute('readonly')) {
+                    input.setAttribute('min', today);
+                }
+            });
+
+            // Fecha de registro automática
+            const fechaRegistro = document.querySelector('[name="FechaRegistro"]');
+            if (fechaRegistro) {
+                fechaRegistro.value = today;
+            }
+        });
+    </script>
 }

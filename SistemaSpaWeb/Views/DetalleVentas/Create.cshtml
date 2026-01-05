@@ -1,16 +1,16 @@
-﻿@model SistemaSpaWeb.Models.DetalleVenta
+@model SistemaSpaWeb.Models.DetalleVenta
 
 @{
-    ViewData["Title"] = "Crear Detalle de Venta";
+    ViewData["Title"] = "Agregar Detalle de Venta";
 }
 
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-success text-white">
                     <h2 class="mb-0">
-                        <i class="bi bi-plus-circle"></i> Registrar Nuevo/a Detalle de Venta
+                        <i class="bi bi-plus-circle"></i> Agregar Detalle de Venta
                     </h2>
                 </div>
                 <div class="card-body">
@@ -18,31 +18,39 @@
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
                         <div class="mb-3">
-                            <label asp-for="DetalleVentaID" class="form-label"></label>
-                            <input asp-for="DetalleVentaID" class="form-control" />
-                            <span asp-validation-for="DetalleVentaID" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">InformaciÃ³n Principal</label>
-                            <input class="form-control" placeholder="Ingrese la informaciÃ³n" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Estado" class="form-label">Estado</label>
-                            <select asp-for="Estado" class="form-select">
-                                <option value="">-- Seleccione --</option>
-                                <option value="Activo" selected>Activo</option>
-                                <option value="Inactivo">Inactivo</option>
+                            <label asp-for="VentaID" class="form-label"></label>
+                            <select asp-for="VentaID" class="form-select" asp-items="ViewBag.VentaID">
+                                <option value="">-- Seleccione una venta --</option>
                             </select>
-                            <span asp-validation-for="Estado" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ProductoID" class="form-label"></label>
+                            <select asp-for="ProductoID" class="form-select" asp-items="ViewBag.ProductoID">
+                                <option value="">-- Seleccione un producto --</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Cantidad" class="form-label"></label>
+                            <input asp-for="Cantidad" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PrecioUnitario" class="form-label"></label>
+                            <input asp-for="PrecioUnitario" class="form-control" />
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle"></i>
+                            El subtotal se calcula autom�ticamente.
                         </div>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <a asp-action="Index" class="btn btn-secondary">
                                 <i class="bi bi-arrow-left"></i> Cancelar
                             </a>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-success">
                                 <i class="bi bi-save"></i> Guardar
                             </button>
                         </div>
@@ -52,9 +60,3 @@
         </div>
     </div>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

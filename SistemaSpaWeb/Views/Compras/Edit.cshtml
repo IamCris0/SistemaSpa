@@ -1,4 +1,4 @@
-﻿@model SistemaSpaWeb.Models.Compra
+@model SistemaSpaWeb.Models.Compra
 
 @{
     ViewData["Title"] = "Editar Compra";
@@ -6,7 +6,7 @@
 
 <div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card shadow">
                 <div class="card-header bg-warning text-dark">
                     <h2 class="mb-0">
@@ -16,22 +16,63 @@
                 <div class="card-body">
                     <form asp-action="Edit" method="post">
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <!-- ID oculto -->
                         <input type="hidden" asp-for="CompraID" />
 
-                        <div class="mb-3">
-                            <label asp-for="CompraID" class="form-label"></label>
-                            <input asp-for="CompraID" class="form-control" />
-                            <span asp-validation-for="CompraID" class="text-danger"></span>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ProveedorID" class="form-label">
+                                    <i class="bi bi-truck"></i> Proveedor
+                                </label>
+                                <select asp-for="ProveedorID"
+                                        class="form-select"
+                                        asp-items="ViewBag.ProveedorID">
+                                    <option value="">-- Seleccione un proveedor --</option>
+                                </select>
+                                <span asp-validation-for="ProveedorID" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="FechaCompra" class="form-label">
+                                    <i class="bi bi-calendar"></i> Fecha de Compra
+                                </label>
+                                <input asp-for="FechaCompra" type="date" class="form-control" />
+                                <span asp-validation-for="FechaCompra" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Total" class="form-label">
+                                    <i class="bi bi-cash-stack"></i> Total
+                                </label>
+                                <input asp-for="Total" class="form-control" />
+                                <span asp-validation-for="Total" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="EstadoCompra" class="form-label">
+                                    <i class="bi bi-info-circle"></i> Estado
+                                </label>
+                                <select asp-for="EstadoCompra" class="form-select">
+                                    <option value="">-- Seleccione --</option>
+                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="Pagada">Pagada</option>
+                                    <option value="Anulada">Anulada</option>
+                                </select>
+                                <span asp-validation-for="EstadoCompra" class="text-danger"></span>
+                            </div>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Estado" class="form-label">Estado</label>
-                            <select asp-for="Estado" class="form-select">
-                                <option value="">-- Seleccione --</option>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
-                            </select>
-                            <span asp-validation-for="Estado" class="text-danger"></span>
+                            <label asp-for="Observaciones" class="form-label">
+                                <i class="bi bi-chat-text"></i> Observaciones
+                            </label>
+                            <textarea asp-for="Observaciones"
+                                      class="form-control"
+                                      rows="3"></textarea>
+                            <span asp-validation-for="Observaciones" class="text-danger"></span>
                         </div>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">

@@ -1,7 +1,7 @@
-﻿@model SistemaSpaWeb.Models.ClienteMembresia
+@model SistemaSpaWeb.Models.ClienteMembresia
 
 @{
-    ViewData["Title"] = "Eliminar Cliente MembresÃ­a";
+    ViewData["Title"] = "Eliminar Membresía";
 }
 
 <div class="container mt-4">
@@ -10,34 +10,124 @@
             <div class="card shadow border-danger">
                 <div class="card-header bg-danger text-white">
                     <h2 class="mb-0">
-                        <i class="bi bi-trash"></i> Eliminar Cliente MembresÃ­a
+                        <i class="bi bi-trash"></i> Eliminar Membresía de Cliente
                     </h2>
                 </div>
+
                 <div class="card-body">
                     <div class="alert alert-warning">
                         <i class="bi bi-exclamation-triangle"></i>
-                        <strong>Â¿EstÃ¡ seguro de que desea eliminar este/a Cliente MembresÃ­a?</strong>
+                        <strong>¿Está seguro de que desea eliminar esta membresía?</strong>
                     </div>
 
                     <dl class="row">
                         <dt class="col-sm-4">ID</dt>
                         <dd class="col-sm-8">@Model.ClienteMembresiaID</dd>
 
-                        <dt class="col-sm-4">InformaciÃ³n</dt>
-                        <dd class="col-sm-8"><strong>@Model.ClienteMembresiaID</strong></dd>
+                        <dt class="col-sm-4">Cliente</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.Cliente != null)
+                            {
+                                <strong>@Model.Cliente.Nombre @Model.Cliente.Apellido</strong>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Sin cliente</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Membresía</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.Membresia != null)
+                            {
+                                <span class="badge bg-info">@Model.Membresia.NombreMembresia</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Sin membresía</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Fecha de Inicio</dt>
+                        <dd class="col-sm-8">
+                            @(Model.FechaInicio.HasValue
+                                ? Model.FechaInicio.Value.ToString("dd/MM/yyyy")
+                                : "—")
+                        </dd>
+
+                        <dt class="col-sm-4">Fecha de Fin</dt>
+                        <dd class="col-sm-8">
+                            @(Model.FechaFin.HasValue
+                                ? Model.FechaFin.Value.ToString("dd/MM/yyyy")
+                                : "—")
+                        </dd>
+
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">
+                            @{
+                                var badgeClass = Model.EstadoMembresia switch
+                                {
+                                    "Activa" => "bg-success",
+                                    "Suspendida" => "bg-warning text-dark",
+                                    "Vencida" => "bg-danger",
+                                    _ => "bg-secondary"
+                                };
+                            }
+                            <span class="badge @badgeClass">@Model.EstadoMembresia</span>
+                        </dd>
+
+                        <dt class="col-sm-4">Fecha de Registro</dt>
+                        <dd class="col-sm-8">
+                            @(Model.FechaRegistro.HasValue
+                                ? Model.FechaRegistro.Value.ToString("dd/MM/yyyy")
+                                : "—")
+                        </dd>
                     </dl>
+
+                    @* Regla de negocio *@
+                    @{
+                        var membresiaActiva = Model.EstadoMembresia == "Activa";
+                    }
+
+                    @if (membresiaActiva)
+                    {
+                        <div class="alert alert-danger">
+                            <i class="bi bi-exclamation-circle"></i>
+                            <strong>Esta membresía está ACTIVA</strong> y no se recomienda eliminarla.
+                            <hr />
+                            <p class="mb-0">
+                                <strong>Sugerencia:</strong> Cambie el estado a
+                                <span class="badge bg-warning text-dark">Suspendida</span> o
+                                <span class="badge bg-danger">Vencida</span>
+                                en lugar de eliminar el registro.
+                            </p>
+                        </div>
+                    }
 
                     <hr />
 
                     <form asp-action="Delete" method="post">
                         <input type="hidden" asp-for="ClienteMembresiaID" />
+
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <a asp-action="Index" class="btn btn-secondary">
                                 <i class="bi bi-arrow-left"></i> Cancelar
                             </a>
-                            <button type="submit" class="btn btn-danger">
-                                <i class="bi bi-trash"></i> Eliminar
-                            </button>
+
+                            @if (!membresiaActiva)
+                            {
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i> Eliminar Membresía
+                                </button>
+                            }
+                            else
+                            {
+                                <a asp-action="Edit"
+                                   asp-route-id="@Model.ClienteMembresiaID"
+                                   class="btn btn-warning">
+                                    <i class="bi bi-pencil"></i> Cambiar Estado
+                                </a>
+                            }
                         </div>
                     </form>
                 </div>

@@ -1,12 +1,12 @@
-﻿@model IEnumerable<SistemaSpaWeb.Models.ClienteMembresia>
+@model IEnumerable<SistemaSpaWeb.Models.ClienteMembresia>
 
 @{
-    ViewData["Title"] = "Clientes MembresÃ­as";
+    ViewData["Title"] = "Clientes con Membresía";
 }
 
 <div class="container mt-4">
     <h1 class="mb-4">
-        <i class="bi bi-person-badge"></i> GestiÃ³n de Clientes MembresÃ­as
+        <i class="bi bi-card-list"></i> Gestión de Membresías de Clientes
     </h1>
 
     @if (TempData["Success"] != null)
@@ -27,7 +27,7 @@
 
     <div class="mb-3">
         <a asp-action="Create" class="btn btn-primary">
-            <i class="bi bi-plus-circle"></i> Nuevo/a Cliente MembresÃ­a
+            <i class="bi bi-plus-circle"></i> Nueva Membresía
         </a>
     </div>
 
@@ -38,8 +38,12 @@
                     <thead class="table-dark">
                         <tr>
                             <th>ID</th>
-                            <th>InformaciÃ³n</th>
+                            <th>Cliente</th>
+                            <th>Membresía</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
                             <th>Estado</th>
+                            <th>Fecha Registro</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -48,10 +52,62 @@
                         {
                             <tr>
                                 <td>@item.ClienteMembresiaID</td>
-                                <td>@item.ClienteMembresiaID</td>
+
                                 <td>
-                                    <span class="badge bg-success">Activo</span>
+                                    @if (item.Cliente != null)
+                                    {
+                                        <span>@item.Cliente.Nombre @item.Cliente.Apellido</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin cliente</span>
+                                    }
                                 </td>
+
+                                <td>
+                                    @if (item.Membresia != null)
+                                    {
+                                        <span class="badge bg-info">@item.Membresia.NombreMembresia</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin membresía</span>
+                                    }
+                                </td>
+
+                                <td>
+                                    @(item.FechaInicio.HasValue
+                                        ? item.FechaInicio.Value.ToString("dd/MM/yyyy")
+                                        : "—")
+                                </td>
+
+                                <td>
+                                    @(item.FechaFin.HasValue
+                                        ? item.FechaFin.Value.ToString("dd/MM/yyyy")
+                                        : "—")
+                                </td>
+
+                                <td>
+                                    @{
+                                        var badgeClass = item.EstadoMembresia switch
+                                        {
+                                            "Activa" => "bg-success",
+                                            "Vencida" => "bg-danger",
+                                            "Suspendida" => "bg-warning text-dark",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @badgeClass">
+                                        @item.EstadoMembresia
+                                    </span>
+                                </td>
+
+                                <td>
+                                    @(item.FechaRegistro.HasValue
+                                        ? item.FechaRegistro.Value.ToString("dd/MM/yyyy")
+                                        : "—")
+                                </td>
+
                                 <td class="text-center">
                                     <a asp-action="Details" asp-route-id="@item.ClienteMembresiaID"
                                        class="btn btn-sm btn-info" title="Ver Detalles">

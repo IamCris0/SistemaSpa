@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SistemaSpaWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7898300f0a113d53ff23cf5d3473c09b53653dcc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87bbcbc197baec0577836cb729868932d7b794a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("SistemaSpaWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SistemaSpaWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

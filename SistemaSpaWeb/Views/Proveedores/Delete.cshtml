@@ -1,47 +1,32 @@
 ﻿@model SistemaSpaWeb.Models.Proveedor
 
-@{
-    ViewData["Title"] = "Eliminar Proveedor";
-}
-
 <div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow border-danger">
-                <div class="card-header bg-danger text-white">
-                    <h2 class="mb-0">
-                        <i class="bi bi-trash"></i> Eliminar Proveedor
-                    </h2>
+    <div class="card shadow border-danger">
+        <div class="card-header bg-danger text-white">
+            <h5 class="mb-0">Eliminar Proveedor</h5>
+        </div>
+
+        <div class="card-body">
+            <p class="text-danger fw-bold">
+                ¿Está seguro que desea eliminar este proveedor?
+            </p>
+
+            <ul class="list-group mb-3">
+                <li class="list-group-item"><strong>Proveedor:</strong> @Model.NombreProveedor</li>
+                <li class="list-group-item"><strong>Contacto:</strong> @Model.Contacto</li>
+                <li class="list-group-item"><strong>Estado:</strong> @Model.Estado</li>
+            </ul>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ProveedorID" />
+
+                <div class="text-end">
+                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Eliminar
+                    </button>
                 </div>
-                <div class="card-body">
-                    <div class="alert alert-warning">
-                        <i class="bi bi-exclamation-triangle"></i>
-                        <strong>Â¿EstÃ¡ seguro de que desea eliminar este/a Proveedor?</strong>
-                    </div>
-
-                    <dl class="row">
-                        <dt class="col-sm-4">ID</dt>
-                        <dd class="col-sm-8">@Model.ProveedorID</dd>
-
-                        <dt class="col-sm-4">InformaciÃ³n</dt>
-                        <dd class="col-sm-8"><strong>@Model.NombreProveedor</strong></dd>
-                    </dl>
-
-                    <hr />
-
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden" asp-for="ProveedorID" />
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a asp-action="Index" class="btn btn-secondary">
-                                <i class="bi bi-arrow-left"></i> Cancelar
-                            </a>
-                            <button type="submit" class="btn btn-danger">
-                                <i class="bi bi-trash"></i> Eliminar
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

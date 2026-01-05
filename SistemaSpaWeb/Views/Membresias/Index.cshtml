@@ -1,76 +1,63 @@
-﻿@model IEnumerable<SistemaSpaWeb.Models.Membresia>
+@model IEnumerable<SistemaSpaWeb.Models.Membresia>
 
 @{
-    ViewData["Title"] = "MembresÃ­as";
+    ViewData["Title"] = "Membresías";
 }
 
 <div class="container mt-4">
-    <h1 class="mb-4">
-        <i class="bi bi-award"></i> GestiÃ³n de MembresÃ­as
-    </h1>
-
-    @if (TempData["Success"] != null)
-    {
-        <div class="alert alert-success alert-dismissible fade show">
-            <i class="bi bi-check-circle"></i> @TempData["Success"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="bi bi-card-checklist"></i> Membresías
+            </h5>
+            <a asp-action="Create" class="btn btn-light btn-sm">
+                <i class="bi bi-plus-circle"></i> Nueva Membresía
+            </a>
         </div>
-    }
 
-    @if (TempData["Error"] != null)
-    {
-        <div class="alert alert-danger alert-dismissible fade show">
-            <i class="bi bi-exclamation-triangle"></i> @TempData["Error"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    }
-
-    <div class="mb-3">
-        <a asp-action="Create" class="btn btn-primary">
-            <i class="bi bi-plus-circle"></i> Nuevo/a MembresÃ­a
-        </a>
-    </div>
-
-    <div class="card shadow-sm">
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead class="table-dark">
+            <table class="table table-hover table-bordered align-middle">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Duración</th>
+                        <th>Precio</th>
+                        <th>Descuento</th>
+                        <th>Estado</th>
+                        <th style="width:180px;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
                         <tr>
-                            <th>ID</th>
-                            <th>InformaciÃ³n</th>
-                            <th>Estado</th>
-                            <th class="text-center">Acciones</th>
+                            <td><strong>@item.NombreMembresia</strong></td>
+                            <td class="text-center">@item.DuracionMeses meses</td>
+                            <td class="text-end">$@item.Precio?.ToString("N2")</td>
+                            <td class="text-center">
+                                <span class="badge bg-info">@item.Descuento %</span>
+                            </td>
+                            <td class="text-center">
+                                @{
+                                    var badge = item.Estado == "Activa" ? "bg-success" : "bg-secondary";
+                                }
+                                <span class="badge @badge">@item.Estado</span>
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Details" asp-route-id="@item.MembresiaID" class="btn btn-info btn-sm">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@item.MembresiaID" class="btn btn-warning btn-sm">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.MembresiaID" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.MembresiaID</td>
-                                <td>@item.NombreMembresia</td>
-                                <td>
-                                    <span class="badge bg-success">Activo</span>
-                                </td>
-                                <td class="text-center">
-                                    <a asp-action="Details" asp-route-id="@item.MembresiaID"
-                                       class="btn btn-sm btn-info" title="Ver Detalles">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
-                                    <a asp-action="Edit" asp-route-id="@item.MembresiaID"
-                                       class="btn btn-sm btn-warning" title="Editar">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <a asp-action="Delete" asp-route-id="@item.MembresiaID"
-                                       class="btn btn-sm btn-danger" title="Eliminar">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

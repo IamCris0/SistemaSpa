@@ -31,3 +31,4 @@ namespace SistemaSpaWeb.Models
         public virtual Membresia? Membresia { get; set; }
     }
 }
+
