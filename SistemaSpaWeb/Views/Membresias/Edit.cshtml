@@ -1,0 +1,56 @@
+﻿@model SistemaSpaWeb.Models.Membresia
+
+@{
+    ViewData["Title"] = "Editar MembresÃ­a";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h2 class="mb-0">
+                        <i class="bi bi-pencil"></i> Editar MembresÃ­a
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="MembresiaID" />
+
+                        <div class="mb-3">
+                            <label asp-for="NombreMembresia" class="form-label"></label>
+                            <input asp-for="NombreMembresia" class="form-control" />
+                            <span asp-validation-for="NombreMembresia" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Estado" class="form-label">Estado</label>
+                            <select asp-for="Estado" class="form-select">
+                                <option value="">-- Seleccione --</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                            <span asp-validation-for="Estado" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-warning">
+                                <i class="bi bi-save"></i> Actualizar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

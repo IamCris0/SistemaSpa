@@ -1,0 +1,126 @@
+@model SistemaSpaWeb.Models.Producto
+
+@{
+    ViewData["Title"] = "Detalles del Producto";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-info-circle"></i> Detalles del Producto
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-primary"><i class="bi bi-box"></i> Información del Producto</h5>
+                            <dl class="row">
+                                <dt class="col-sm-5">ID Producto</dt>
+                                <dd class="col-sm-7">@Model.ProductoID</dd>
+
+                                <dt class="col-sm-5">Nombre</dt>
+                                <dd class="col-sm-7"><strong>@Model.NombreProducto</strong></dd>
+
+                                <dt class="col-sm-5">Descripción</dt>
+                                <dd class="col-sm-7">@(Model.Descripcion ?? "Sin descripción")</dd>
+
+                                <dt class="col-sm-5">Marca</dt>
+                                <dd class="col-sm-7">
+                                    @if (!string.IsNullOrEmpty(Model.Marca))
+                                    {
+                                        <span class="badge bg-info">@Model.Marca</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin marca</span>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-5">Precio Unitario</dt>
+                                <dd class="col-sm-7">
+                                    <strong class="text-success fs-5">$@(Model.PrecioUnitario?.ToString("N2") ?? "0.00")</strong>
+                                </dd>
+
+                                <dt class="col-sm-5">Estado</dt>
+                                <dd class="col-sm-7">
+                                    <span class="badge @(Model.Estado == "Activo" ? "bg-success" : "bg-secondary") fs-6">
+                                        @Model.Estado
+                                    </span>
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5 class="text-primary"><i class="bi bi-boxes"></i> Información de Inventario</h5>
+                            <dl class="row">
+                                <dt class="col-sm-5">Stock Actual</dt>
+                                <dd class="col-sm-7">
+                                    @{
+                                        var stockBajo = (Model.Stock ?? 0) <= (Model.StockMinimo ?? 0);
+                                    }
+                                    @if (stockBajo)
+                                    {
+                                        <span class="badge bg-warning text-dark fs-5">
+                                            <i class="bi bi-exclamation-triangle"></i> @(Model.Stock ?? 0) unidades
+                                        </span>
+                                        <br />
+                                        <small class="text-danger">⚠️ Stock bajo</small>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success fs-5">@(Model.Stock ?? 0) unidades</span>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-5">Stock Mínimo</dt>
+                                <dd class="col-sm-7">
+                                    <strong>@(Model.StockMinimo ?? 0)</strong> unidades
+                                </dd>
+
+                                <dt class="col-sm-5">Compras</dt>
+                                <dd class="col-sm-7">
+                                    <span class="badge bg-primary fs-6">
+                                        @(Model.DetalleCompras?.Count ?? 0) registro(s)
+                                    </span>
+                                </dd>
+
+                                <dt class="col-sm-5">Ventas</dt>
+                                <dd class="col-sm-7">
+                                    <span class="badge bg-success fs-6">
+                                        @(Model.DetalleVentas?.Count ?? 0) registro(s)
+                                    </span>
+                                </dd>
+                            </dl>
+
+                            @if (stockBajo)
+                            {
+                                <div class="alert alert-warning">
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                    <strong>Atención:</strong> El stock está por debajo del mínimo.
+                                    Se recomienda realizar una nueva compra.
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver al Listado
+                        </a>
+                        <a asp-controller="DetalleCompras" asp-action="Create" class="btn btn-primary">
+                            <i class="bi bi-cart-plus"></i> Registrar Compra
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@Model.ProductoID" class="btn btn-warning">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

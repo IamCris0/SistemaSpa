@@ -1,0 +1,115 @@
+@model SistemaSpaWeb.Models.Producto
+
+@{
+    ViewData["Title"] = "Crear Producto";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-plus-circle"></i> Registrar Nuevo Producto
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="ProductoID" class="form-label"></label>
+                            <input asp-for="ProductoID" class="form-control" />
+                            <span asp-validation-for="ProductoID" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="NombreProducto" class="form-label">
+                                <i class="bi bi-box"></i> Nombre del Producto *
+                            </label>
+                            <input asp-for="NombreProducto" class="form-control" placeholder="Ej: Aceite de Masaje" />
+                            <span asp-validation-for="NombreProducto" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Descripcion" class="form-label">
+                                <i class="bi bi-card-text"></i> Descripción
+                            </label>
+                            <textarea asp-for="Descripcion" class="form-control" rows="3" 
+                                      placeholder="Descripción del producto"></textarea>
+                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Marca" class="form-label">
+                                    <i class="bi bi-tag"></i> Marca
+                                </label>
+                                <input asp-for="Marca" class="form-control" placeholder="Ej: Natura" />
+                                <span asp-validation-for="Marca" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PrecioUnitario" class="form-label">
+                                    <i class="bi bi-cash"></i> Precio Unitario *
+                                </label>
+                                <input asp-for="PrecioUnitario" class="form-control" type="number" 
+                                       step="0.01" min="0.01" placeholder="0.00" />
+                                <span asp-validation-for="PrecioUnitario" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Stock" class="form-label">
+                                    <i class="bi bi-boxes"></i> Stock Inicial
+                                </label>
+                                <input asp-for="Stock" class="form-control" type="number" 
+                                       min="0" placeholder="0" value="0" />
+                                <span asp-validation-for="Stock" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="StockMinimo" class="form-label">
+                                    <i class="bi bi-exclamation-triangle"></i> Stock Mínimo
+                                </label>
+                                <input asp-for="StockMinimo" class="form-control" type="number" 
+                                       min="0" placeholder="0" value="5" />
+                                <span asp-validation-for="StockMinimo" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Estado" class="form-label">
+                                    <i class="bi bi-info-circle"></i> Estado
+                                </label>
+                                <select asp-for="Estado" class="form-select">
+                                    <option value="">-- Seleccione --</option>
+                                    <option value="Activo" selected>Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                                <span asp-validation-for="Estado" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle"></i>
+                            <strong>Nota:</strong> El stock se actualizará automáticamente con las compras y ventas.
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save"></i> Guardar Producto
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

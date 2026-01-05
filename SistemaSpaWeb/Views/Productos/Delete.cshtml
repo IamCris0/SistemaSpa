@@ -1,0 +1,113 @@
+@model SistemaSpaWeb.Models.Producto
+
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-trash"></i> Eliminar Producto
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        <strong>¿Está seguro de que desea eliminar este producto?</strong>
+                    </div>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">ID Producto</dt>
+                        <dd class="col-sm-8">@Model.ProductoID</dd>
+
+                        <dt class="col-sm-4">Nombre</dt>
+                        <dd class="col-sm-8"><strong>@Model.NombreProducto</strong></dd>
+
+                        <dt class="col-sm-4">Marca</dt>
+                        <dd class="col-sm-8">@(Model.Marca ?? "Sin marca")</dd>
+
+                        <dt class="col-sm-4">Precio</dt>
+                        <dd class="col-sm-8"><strong>$@(Model.PrecioUnitario?.ToString("N2") ?? "0.00")</strong></dd>
+
+                        <dt class="col-sm-4">Stock</dt>
+                        <dd class="col-sm-8">@(Model.Stock ?? 0) unidades</dd>
+
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge @(Model.Estado == "Activo" ? "bg-success" : "bg-secondary")">
+                                @Model.Estado
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-4">Registros Asociados</dt>
+                        <dd class="col-sm-8">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <i class="bi bi-cart"></i>
+                                    Compras: <strong>@(Model.DetalleCompras?.Count ?? 0)</strong>
+                                </li>
+                                <li>
+                                    <i class="bi bi-bag"></i>
+                                    Ventas: <strong>@(Model.DetalleVentas?.Count ?? 0)</strong>
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    @{
+                        var tieneDependencias = (Model.DetalleCompras?.Count ?? 0) > 0 ||
+                        (Model.DetalleVentas?.Count ?? 0) > 0;
+                    }
+
+                    @if (tieneDependencias)
+                    {
+                        <div class="alert alert-danger">
+                            <i class="bi bi-exclamation-circle"></i>
+                            <strong>Este producto NO puede ser eliminado</strong> porque tiene registros asociados:
+                            <ul class="mb-0 mt-2">
+                                @if ((Model.DetalleCompras?.Count ?? 0) > 0)
+                                {
+                                    <li>@Model.DetalleCompras.Count compra(s) registrada(s)</li>
+                                }
+                                @if ((Model.DetalleVentas?.Count ?? 0) > 0)
+                                {
+                                    <li>@Model.DetalleVentas.Count venta(s) registrada(s)</li>
+                                }
+                            </ul>
+                            <hr />
+                            <p class="mb-0">
+                                <strong>Sugerencia:</strong> En lugar de eliminar, puede cambiar el estado a "Inactivo".
+                            </p>
+                        </div>
+                    }
+
+                    <hr />
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="ProductoID" />
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            @if (!tieneDependencias)
+                            {
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </button>
+                            }
+                            else
+                            {
+                                <a asp-action="Edit" asp-route-id="@Model.ProductoID" class="btn btn-warning">
+                                    <i class="bi bi-pencil"></i> Cambiar a Inactivo
+                                </a>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
